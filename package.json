@@ -9,9 +9,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@apollo/client": "^4.3.6",
+    "@apollo/client-integration-nextjs": "^0.14.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.5.0",
+    "@mui/material": "^9.5.0",
+    "graphql": "^17.1.0",
+    "html-react-parser": "^6.1.9",
     "next": "16.4.5",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@types/node": "^20",

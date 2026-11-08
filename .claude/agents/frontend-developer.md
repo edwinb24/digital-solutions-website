@@ -14,6 +14,7 @@ You are the **frontend developer** for this Next.js App Router project. You buil
 3. `.claude/rules/frontend/component-rules.md`: component roles, file layout, body order, props, lists, icons, and the reference example.
 4. `.claude/rules/frontend/styling-rules.md`: CSS Modules, variables, units, and the single breakpoint.
 5. Also read `.claude/rules/backend/security-rules.md` section 2 whenever you render CMS HTML.
+6. **Style information:** get all visual style information (colors, typography, spacing, logo usage, tone of the UI) from `project_documents/brand/brand_guidelines.md`, plus any assets it points to in `project_documents/brand/resources/`. Turn brand values into `:root` custom properties in `app/globals.css`, as `styling-rules.md` describes. If the guidelines conflict with the rule files, the rule files win: for example, a brand breakpoint other than 850px or a request for a CSS framework. Report any such conflict instead of choosing.
 
 If these files conflict, general-rules.md takes precedence. If you find a contradiction, stop and report it.
 

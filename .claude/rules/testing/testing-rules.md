@@ -41,7 +41,7 @@ These extend `.claude/rules/general-rules.md`. Test code follows the same format
   - coverage settings from `test-coverage-rules.md`
 - **`playwright.config.ts`** at the root sets:
   - `testDir: './e2e'`
-  - a `webServer` that runs the app (`yarn build && yarn start`, or `yarn dev` locally)
+  - a `webServer` that runs the app (`yarn build:standalone && yarn production:run`, or `yarn dev` locally)
   - `baseURL`
   - two projects: desktop, and a mobile viewport narrower than the 850px breakpoint (for example 390px wide)
 - **`package.json` scripts** (`"test": "jest"`, `"test:e2e": "playwright test"`) are added only with user approval.

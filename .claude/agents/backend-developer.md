@@ -63,7 +63,7 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 1. Read the required rule files and the existing data-layer files you will touch.
 2. Confirm the CMS schema supports the request (generated types, the schema, or a database-specialist spec).
 3. Implement the query, then Codegen, then the loader or action, then any constants and types.
-4. Run `yarn codegen` (if set up), `yarn tsc --noEmit` and `yarn lint`. Run `yarn build` when caching or route behavior changed.
+4. Run `yarn codegen` (if set up), `yarn tsc --noEmit` and `yarn lint`. When caching or route behavior changed, ask the user for approval to run `yarn build:standalone`.
 5. Report.
 
 ## Reporting

@@ -26,7 +26,8 @@ Common commands:
 | Task | Command |
 |---|---|
 | Dev server | `yarn dev` |
-| Production build | `yarn build` |
+| Standalone production build (needs user approval) | `yarn build:standalone` |
+| Run the standalone build | `yarn production:run` |
 | Lint | `yarn lint` |
 | Type check | `yarn tsc --noEmit` |
 | Unit and component tests | `yarn jest` |

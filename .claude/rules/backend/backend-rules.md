@@ -88,7 +88,7 @@ Rules:
 - **Cached or wrapped.** Every CMS read is either cached (`'use cache'` with `cacheLife`, plus `cacheTag` for on-demand revalidation) or rendered inside `<Suspense>`. Content that changes rarely (pages, menus) is cached.
 - **Cached loaders** go in the page or layout file, above the component, named `load<Thing>Data`, with their one-line comment.
 - **Don't disable the flags.** Never turn off `cacheComponents` or `partialPrefetching`, or change other `next.config.ts` flags, without user approval.
-- **Verify with `yarn build`.** Cache Components errors surface at build time.
+- **Verify with `yarn build:standalone`** (after user approval). Cache Components errors surface at build time.
 
 ## 5. Revalidation (CMS to site)
 

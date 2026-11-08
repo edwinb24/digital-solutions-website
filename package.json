@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:standalone": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "production:run": "PORT=3000 HOSTNAME=0.0.0.0 node .next/standalone/server.js",
     "start": "next start",
     "lint": "eslint"
   },

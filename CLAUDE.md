@@ -61,7 +61,8 @@ Precedence: the user's instructions, then `general-rules.md`, then the domain ru
   - Before proposing a package, evaluate adoption, maintenance, reliability, security and compatibility.
   - Only propose packages with 10,000+ weekly downloads. If none qualifies, ask the user for suggestions.
 - **Protected files:** never hand-edit generated GraphQL files, `yarn.lock` or `.env*`.
+- **Builds:** the application is built locally as a Next.js standalone output with `yarn build:standalone`. Never run it (or any other production build) without explicit user approval first. This applies to you and to every subagent. Use `yarn lint` and `yarn tsc --noEmit` for verification instead.
 
 ## Commands
 
-`yarn dev` · `yarn build` · `yarn lint` · `yarn tsc --noEmit` · `yarn jest` · `yarn playwright test` (once installed) · `yarn codegen` (once set up)
+`yarn dev` · `yarn build:standalone` (approval required) · `yarn production:run` · `yarn lint` · `yarn tsc --noEmit` · `yarn jest` · `yarn playwright test` (once installed) · `yarn codegen` (once set up)

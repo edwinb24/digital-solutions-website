@@ -27,8 +27,9 @@ Put the pieces of a component file in this order:
 1. `'use client'`, only when needed.
 2. Imports, sorted as described in general-rules section 7.
 3. Local exported types used by the component's props or by its children.
-4. Module-level constants that only this file uses. Shared values go in `constants.tsx`.
-5. A one-line purpose comment, then `export default function ComponentName(...)`.
+4. A one-line purpose comment, then `export default function ComponentName(...)`.
+
+Component files never declare module-level constants. Every constant goes in `app/utils/constants.tsx`, even one that only this file uses (general-rules section 7).
 
 ## 3. Component body order
 

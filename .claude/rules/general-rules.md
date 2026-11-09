@@ -99,7 +99,25 @@ These match the following Prettier options. Prettier is not installed, so apply 
 
 ## 6. Naming
 
-Use long, descriptive, multi-word names that say what a value holds or what a function does. Do not abbreviate: write `index`, not `ind` or `i`; `service`, not `s` or `a`. Name callback parameters after the item (`services.map(service => ...)`). The only short names allowed are `e` for DOM event parameters and caught errors.
+Use long, descriptive, multi-word names that say what a value holds or what a function does. Do not abbreviate: write `index`, not `ind` or `i`; `service`, not `s` or `a`. Name callback parameters after the item (`services.map(service => ...)`). The only short names allowed are `e` for DOM event parameters and caught errors, and `_` for unused names.
+
+**Unused names are just `_`.** A parameter or variable that is never used (one that would otherwise start with `_`) is named `_` alone, not `_time` or `_event`: write `test(_: number)`, not `test(_time: number)`.
+
+**No abbreviations in names.** This applies to every kind of name in the table below: variables, functions, parameters, props, types, constants, enums, CSS classes, files and folders.
+
+- **A name is never an abbreviation.** Do not write `ctx`, `dt`, `idx`, `btn`, `img`, `msg`, `el`, `res` or `cfg`.
+- **A name never mixes a whole word with an abbreviation.** Do not write `deltaMs`, `navBtn`, `prevIndex`, `errorMsg` or `imgUrl`. Spell every part out.
+
+| Instead of | Write |
+|---|---|
+| `ctx` | `canvasDrawingContext` |
+| `dt` | `secondsSinceLastDrawnFrame` |
+| `deltaMs` | `timeSincePreviousFrame` |
+
+Two kinds of name are exempt:
+
+- **Widely recognised acronyms** used as words: `URL`, `ID`, `CMS`, `API`, `HTML`, `CSS`, `SEO` (`SERVER_URL`, `SERVICES_PAGE_ID`).
+- **Names fixed by a framework, library or the CMS schema**, which you cannot rename: `props`, `params`, `searchParams`, `href`, `src`, `alt`, `__typename`, ACF field names.
 
 | Item | Convention | Example |
 |---|---|---|
@@ -196,10 +214,12 @@ e2e/<flow-name>.spec.ts             # Playwright tests
   export const normalizeDate = (dateString: string): string => {
   ```
 
-- **Comment style:** `// ` followed by a sentence-case phrase. Use the same style to label assembly steps inside a function (`// Adding the contact link`).
-- **Tags:** `// NOTE - ...` for context and `// TODO - ...` for known follow-ups.
-- **CSS:** global stylesheets use `/* Section Name */` headings.
-- No JSDoc blocks are required. Do not leave commented-out code.
+- **Comment style:** `// ` followed by a sentence-case phrase.
+- **No other comments.** The one-line function comment is the only comment you may add on your own. This rule applies to the main agent and to every subagent. Do not add step labels inside functions, explanatory notes, `// NOTE - ...` or `// TODO - ...` tags, JSDoc blocks or commented-out code.
+- **Exceptions need the main agent's decision.** If you believe another comment is truly necessary (for example, a non-obvious workaround that would otherwise be "fixed" back into a bug), do not add it yourself:
+  - **Subagents:** list it under `## Comment requests` in your report (section 12), with the file and line, the exact comment text and why it is needed. The main agent makes the final decision and adds the approved comments.
+  - **Main agent:** decide each request. Record every comment request, whether approved or rejected and whether it came from you or from a subagent, with its file and line. When the user's prompt has finished processing, include the full list in the final reply, under a **Comment exceptions** heading.
+- **CSS:** global stylesheets use `/* Section Name */` headings. These are the only CSS comments allowed.
 
 ## 10. Error handling and logging
 
@@ -208,6 +228,18 @@ e2e/<flow-name>.spec.ts             # Playwright tests
   - Request error: `if (error) return <p>Error Loading this Element</p>`
   - Missing data: `return <p>Element Failed to Load</p>`
 - Wrap every `fetch` or other async call that can reject in `try/catch`. Narrow the caught value (`typeof e === 'string'`, `e instanceof Error`), show the user a message through state, and log it with `console.error(e)`.
+- **No `finally` blocks when avoidable.** Put the code that would go in `finally` directly after the `try/catch`. Use `finally` only when the `try` or `catch` returns or rethrows, so code placed after the block would not run.
+
+  ```tsx
+  try {
+      await submitContactForm(formValues)
+      setShowSuccessMessage(true)
+  } catch (e) {
+      if (e instanceof Error) setErrorMessage(e.message)
+      console.error(e)
+  }
+  setFormSubmitting(false)
+  ```
 - `console.error` is the only console method allowed in committed code. No `console.log`.
 - No logging or error-tracking libraries without approval.
 
@@ -238,6 +270,9 @@ One or two sentences on what was done.
 ## Follow-ups
 - Work for other agents (for example "backend-developer: add `shortDescription` to GetServiceList").
 - Approvals needed (packages, CMS changes).
+
+## Comment requests
+- `path/to/File.tsx:42`: `// Exact comment text`: why it is necessary (or "None").
 ```
 
 Never report a check as passing unless you ran it.

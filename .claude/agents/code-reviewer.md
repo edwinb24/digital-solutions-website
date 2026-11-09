@@ -30,12 +30,13 @@ You are the **code reviewer** for this project. You make sure every other agent 
 
 **General (every file)**
 - **Formatting:** 4 spaces, no semicolons, single quotes (JSX attributes too), no bracket spacing, trailing commas, no parentheses around a single arrow parameter, 80 columns, ternary and `if` formatting, blank lines, one final newline.
-- **Naming:** descriptive, unabbreviated names, and the right case for each kind of file, folder, variable, handler, constant, enum, type and CSS class.
+- **Naming:** descriptive, unabbreviated names (no abbreviations such as `ctx`, and no word-plus-abbreviation mixes such as `deltaMs`; only the acronym and framework-name exemptions in general-rules section 6; unused names are `_`, not `_time`), and the right case for each kind of file, folder, variable, handler, constant, enum, type and CSS class.
 - **Structure:** each file in its correct location; constants in `constants.tsx`, shared types in `SharedTypes.ts`, helpers in `utils/*Handler.ts`; no inlined magic values.
 - **Imports:** `@/app/...` alias (no `../`), sorted order, `import type` for types, CSS Module import names (`classes`, `sharedClasses`, `formClasses`).
 - **Functions:** a one-line purpose comment above **every** named function (components, handlers, loaders, actions, utilities, test helpers).
+- **Comments:** no comment besides the one-line function comments and the `/* Section Name */` headings in global stylesheets, unless the main agent approved it (general-rules.md section 9). Flag any other comment as **Must fix**.
 - **TypeScript:** no `any`, `Array<T>`, `type` vs `interface`, enum comparisons, null fallbacks.
-- **Error handling:** guards and standard fallbacks, `try/catch` with narrowing, no `console.log`.
+- **Error handling:** guards and standard fallbacks, `try/catch` with narrowing, no `console.log`, and no `finally` block unless the `try` or `catch` returns or rethrows (otherwise the code goes after the `try/catch`).
 - **Libraries:** only approved libraries. No new dependency in `package.json` without recorded user approval. Npm, pnpm or bun lockfiles are not allowed.
 - **Protected files:** `*.generated.ts`, `types/__generated__/`, `yarn.lock` and `.env*` were not edited by hand.
 

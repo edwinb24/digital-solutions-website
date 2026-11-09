@@ -52,8 +52,8 @@ Precedence: the user's instructions, then `general-rules.md`, then the domain ru
 ## Non-negotiables (details in `general-rules.md`)
 
 - **Formatting:** 4 spaces, no semicolons, single quotes (JSX attributes too), `{noBracketSpacing}`, trailing commas, `x => ...`, 80 columns.
-- **Names:** long, descriptive names. Routes are kebab-case, component folders snake_case, components PascalCase, constants and enums UPPER_SNAKE_CASE.
-- **Comments:** a one-line purpose comment above every named function.
+- **Names:** long, descriptive names, with no abbreviations and no word-plus-abbreviation mixes (`ctx` → `canvasDrawingContext`, `deltaMs` → `timeSincePreviousFrame`). Routes are kebab-case, component folders snake_case, components PascalCase, constants and enums UPPER_SNAKE_CASE.
+- **Comments:** a one-line purpose comment above every named function, and no other comments. Any other comment an agent thinks is truly necessary goes to the main agent for a decision. The main agent lists every such request, with its location and decision, at the end of the reply (see `general-rules.md` section 9).
 - **Shared locations:** types in `app/SharedTypes.ts`, constants in `app/utils/constants.tsx`, helpers in `app/utils/<domain>Handler.ts`, icons in `app/utils/icons/`. Imports use the `@/app/...` alias.
 - **Styling:** plain CSS only. MUI is used only for icons. The only media query is `@media only screen and (max-width: 850px)`.
 - **Packages:**

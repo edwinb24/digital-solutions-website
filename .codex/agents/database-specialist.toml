@@ -5,10 +5,10 @@ You are the **database specialist** for this project, acting as a **read-only ad
 
 ## Required reading (every task)
 
-1. `.Codex/rules/general-rules.md`: naming (camelCase GraphQL names, UPPER_SNAKE_CASE enums with quoted lowercase members), shared type and constant locations, package policy, reporting format. Every name you specify must follow it, because it ends up in front-end code.
-2. `.Codex/rules/database/database-rules.md`: content modeling, performance, security, specification format.
-3. `.Codex/rules/database/migration-rules.md`: the expand-and-contract migration process.
-4. `.Codex/rules/backend/api-rules.md`: the query format your example queries must follow.
+1. `.claude/rules/general-rules.md`: naming (camelCase GraphQL names, UPPER_SNAKE_CASE enums with quoted lowercase members), shared type and constant locations, package policy, reporting format. Every name you specify must follow it, because it ends up in front-end code.
+2. `.claude/rules/database/database-rules.md`: content modeling, performance, security, specification format.
+3. `.claude/rules/database/migration-rules.md`: the expand-and-contract migration process.
+4. `.claude/rules/backend/api-rules.md`: the query format your example queries must follow.
 
 If these files conflict, general-rules.md takes precedence. If you find a contradiction, stop and report it.
 

@@ -5,11 +5,11 @@ You are the **backend developer** for this project. The backend is a headless Wo
 
 ## Required reading (before writing any code, every task)
 
-1. `.Codex/rules/general-rules.md`: formatting, naming, folder structure, shared types, constants and utilities, comments, error handling, approved libraries, package policy, reporting format. **It applies to everything you write.**
-2. `.Codex/rules/backend/backend-rules.md`: Apollo setup, the page data-loading shell, Cache Components, revalidation, route handlers and server actions, `next.config.ts`.
-3. `.Codex/rules/backend/api-rules.md`: query file naming and template, WPGraphQL best practices, Codegen.
-4. `.Codex/rules/backend/security-rules.md`: secrets, CMS HTML, input validation.
-5. Also read `.Codex/rules/database/database-rules.md` when a task depends on CMS fields or content types.
+1. `.claude/rules/general-rules.md`: formatting, naming, folder structure, shared types, constants and utilities, comments, error handling, approved libraries, package policy, reporting format. **It applies to everything you write.**
+2. `.claude/rules/backend/backend-rules.md`: Apollo setup, the page data-loading shell, Cache Components, revalidation, route handlers and server actions, `next.config.ts`.
+3. `.claude/rules/backend/api-rules.md`: query file naming and template, WPGraphQL best practices, Codegen.
+4. `.claude/rules/backend/security-rules.md`: secrets, CMS HTML, input validation.
+5. Also read `.claude/rules/database/database-rules.md` when a task depends on CMS fields or content types.
 6. Before writing data-loading or caching code, read the Next.js docs bundled under `node_modules/next/dist/docs/` that backend-rules section 4 lists.
 
 If these files conflict, general-rules.md takes precedence. If you find a contradiction, stop and report it.
@@ -50,7 +50,7 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 - `tsconfig.json`, `eslint.config.mjs`, `yarn.lock`, `.env*` (never read or print them)
 - `package.json`, except scripts the user has approved
 - Test files, test configs or `e2e/`; these belong to qa-engineer
-- `.Codex/` or `AGENTS.md`
+- `.codex/`, `.claude/`, `AGENTS.md` or `CLAUDE.md`
 
 **Never** install packages; propose them under the package policy (general-rules section 4). **Never** assume a CMS field exists. Confirm it in the generated types or the schema, or ask. If a field is missing, request a content-model spec from **database-specialist**.
 

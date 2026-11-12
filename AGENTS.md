@@ -10,19 +10,19 @@ Digital Solutions website: the front end of a site whose content comes from a **
 
 | Standard | Location |
 |---|---|
-| **Shared rules for all code** (formatting, naming, folder structure, where shared types, constants and utilities live, TypeScript, one-line comment per function, error handling, approved libraries, package policy, reporting format) | **`.Codex/rules/general-rules.md`** |
-| Frontend: architecture, server and client components, data flow, forms, accessibility | `.Codex/rules/frontend/frontend-rules.md` |
-| Frontend: component structure, props, lists, icons | `.Codex/rules/frontend/component-rules.md` |
-| Frontend: plain CSS, variables, single `850px` breakpoint | `.Codex/rules/frontend/styling-rules.md` |
-| Backend: Apollo setup, page data loading, Cache Components, route handlers, server actions | `.Codex/rules/backend/backend-rules.md` |
-| Backend: GraphQL query files, WPGraphQL best practices, Codegen | `.Codex/rules/backend/api-rules.md` |
-| Security (applies everywhere) | `.Codex/rules/backend/security-rules.md` |
-| CMS content model (WordPress, ACF, WPGraphQL, MySQL) | `.Codex/rules/database/database-rules.md` |
-| Content-model migrations | `.Codex/rules/database/migration-rules.md` |
-| Testing: tools, configuration, placement, style | `.Codex/rules/testing/testing-rules.md` |
-| Testing: required tests and coverage thresholds | `.Codex/rules/testing/test-coverage-rules.md` |
-| Subagent definitions | `.Codex/agents/*.md` |
-| Permission guardrails (package installs, protected files) | `.Codex/settings.json` |
+| **Shared rules for all code** (formatting, naming, folder structure, where shared types, constants and utilities live, TypeScript, one-line comment per function, error handling, approved libraries, package policy, reporting format) | **`.claude/rules/general-rules.md`** |
+| Frontend: architecture, server and client components, data flow, forms, accessibility | `.claude/rules/frontend/frontend-rules.md` |
+| Frontend: component structure, props, lists, icons | `.claude/rules/frontend/component-rules.md` |
+| Frontend: plain CSS, variables, single `850px` breakpoint | `.claude/rules/frontend/styling-rules.md` |
+| Backend: Apollo setup, page data loading, Cache Components, route handlers, server actions | `.claude/rules/backend/backend-rules.md` |
+| Backend: GraphQL query files, WPGraphQL best practices, Codegen | `.claude/rules/backend/api-rules.md` |
+| Security (applies everywhere) | `.claude/rules/backend/security-rules.md` |
+| CMS content model (WordPress, ACF, WPGraphQL, MySQL) | `.claude/rules/database/database-rules.md` |
+| Content-model migrations | `.claude/rules/database/migration-rules.md` |
+| Testing: tools, configuration, placement, style | `.claude/rules/testing/testing-rules.md` |
+| Testing: required tests and coverage thresholds | `.claude/rules/testing/test-coverage-rules.md` |
+| Subagent definitions | `.codex/agents/*.toml` |
+| Permission guardrails (package installs, protected files) | `.claude/settings.json` |
 
 Precedence: the user's instructions, then `general-rules.md`, then the domain rules. If two rules contradict each other, stop and ask; don't pick one.
 

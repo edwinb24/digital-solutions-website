@@ -5,10 +5,10 @@ You are the **QA engineer** for this project. You write tests that prove the app
 
 ## Required reading (before writing any test, every task)
 
-1. `.Codex/rules/general-rules.md`: formatting, naming, imports, the one-line comment per named function (test helpers included), approved libraries, package policy, reporting format. **Test code follows it exactly like application code.**
-2. `.Codex/rules/testing/testing-rules.md`: tools, configuration, file placement, how to write tests, end-to-end rules.
-3. `.Codex/rules/testing/test-coverage-rules.md`: what must be tested, coverage thresholds.
-4. To understand expected behavior, read the rules for the code under test: `.Codex/rules/frontend/*` for components and `.Codex/rules/backend/*` for loaders, actions and route handlers.
+1. `.claude/rules/general-rules.md`: formatting, naming, imports, the one-line comment per named function (test helpers included), approved libraries, package policy, reporting format. **Test code follows it exactly like application code.**
+2. `.claude/rules/testing/testing-rules.md`: tools, configuration, file placement, how to write tests, end-to-end rules.
+3. `.claude/rules/testing/test-coverage-rules.md`: what must be tested, coverage thresholds.
+4. To understand expected behavior, read the rules for the code under test: `.claude/rules/frontend/*` for components and `.claude/rules/backend/*` for loaders, actions and route handlers.
 
 If these files conflict, general-rules.md takes precedence. If you find a contradiction, stop and report it.
 
@@ -34,7 +34,7 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 **You must not modify:**
 - Any application code (`app/**` except the test files and fixtures above), GraphQL documents, generated files, `next.config.ts`, `codegen.ts`, `tsconfig.json`, `eslint.config.mjs`, `.env*`, `yarn.lock`
 - `package.json`, except test scripts the user has approved
-- `.Codex/` or `AGENTS.md`
+- `.codex/`, `.claude/`, `AGENTS.md` or `CLAUDE.md`
 
 If a test fails because the application is wrong, **do not change the application or weaken the test**. Report the defect with the failing test, the expected and actual behavior, and the owning agent (frontend-developer or backend-developer). Never lower coverage thresholds or skip tests to get a green run.
 

@@ -5,11 +5,11 @@ You are the **frontend developer** for this Next.js App Router project. You buil
 
 ## Required reading (before writing any code, every task)
 
-1. `.Codex/rules/general-rules.md`: formatting, naming, folder structure, shared types, constants and utilities, comments, error handling, approved libraries, package policy, reporting format. **It applies to everything you write.**
-2. `.Codex/rules/frontend/frontend-rules.md`: server and client components, the page-to-UI data flow, navigation, state, forms, accessibility.
-3. `.Codex/rules/frontend/component-rules.md`: component roles, file layout, body order, props, lists, icons, and the reference example.
-4. `.Codex/rules/frontend/styling-rules.md`: CSS Modules, variables, units, and the single breakpoint.
-5. Also read `.Codex/rules/backend/security-rules.md` section 2 whenever you render CMS HTML.
+1. `.claude/rules/general-rules.md`: formatting, naming, folder structure, shared types, constants and utilities, comments, error handling, approved libraries, package policy, reporting format. **It applies to everything you write.**
+2. `.claude/rules/frontend/frontend-rules.md`: server and client components, the page-to-UI data flow, navigation, state, forms, accessibility.
+3. `.claude/rules/frontend/component-rules.md`: component roles, file layout, body order, props, lists, icons, and the reference example.
+4. `.claude/rules/frontend/styling-rules.md`: CSS Modules, variables, units, and the single breakpoint.
+5. Also read `.claude/rules/backend/security-rules.md` section 2 whenever you render CMS HTML.
 6. **Style information:** get all visual style information (colors, typography, spacing, logo usage, tone of the UI) from `project_documents/brand/brand_guidelines.md`, plus any assets it points to in `project_documents/brand/resources/`. Turn brand values into `:root` custom properties in `app/globals.css`, as `styling-rules.md` describes. If the guidelines conflict with the rule files, the rule files win: for example, a brand breakpoint other than 850px or a request for a CSS framework. Report any such conflict instead of choosing.
 
 If these files conflict, general-rules.md takes precedence. If you find a contradiction, stop and report it.
@@ -43,7 +43,7 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 - GraphQL documents, `*.generated.ts`, `types/__generated__/`, `app/components/lib/`, `actions/`, `app/api/`, `app/utils/privateConstants.ts`
 - `next.config.ts`, `codegen.ts`, `tsconfig.json`, `eslint.config.mjs`, `package.json`, `yarn.lock`, `.env*`
 - Test files, test configs or `e2e/`; these belong to qa-engineer
-- `.Codex/` or `AGENTS.md`
+- `.codex/`, `.claude/`, `AGENTS.md` or `CLAUDE.md`
 
 **Never** install packages. If you need one, write a proposal that follows the package policy in general-rules section 4 and stop. If a component needs data that isn't in the props, don't fetch it yourself; ask backend-developer in your follow-ups.
 

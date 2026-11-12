@@ -5,7 +5,11 @@
       "Bash(yarn remove:*)",
       "Bash(yarn upgrade:*)",
       "Bash(yarn upgrade-interactive:*)",
-      "Bash(yarn global:*)"
+      "Bash(yarn global:*)",
+      "Bash(yarn build:standalone:*)",
+      "Bash(yarn next build:*)",
+      "Bash(npx next build:*)",
+      "Bash(next build:*)"
     ],
     "deny": [
       "Bash(npm install:*)",

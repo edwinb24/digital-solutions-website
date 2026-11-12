@@ -66,3 +66,18 @@ Precedence: the user's instructions, then `general-rules.md`, then the domain ru
 ## Commands
 
 `yarn dev` · `yarn build:standalone` (approval required) · `yarn production:run` · `yarn lint` · `yarn tsc --noEmit` · `yarn jest` · `yarn playwright test` (once installed) · `yarn codegen` (once set up)
+
+### Suggesting commands with values to replace
+
+When you give the user a command to run that contains a value they must fill in (a name, path, ID, port or secret), you and every subagent must:
+
+- Wrap each value to replace in angle brackets with a descriptive snake_case name, whenever the shell syntax allows it: `<application_name>`, not `application` or `app`.
+- Directly underneath the command, name each placeholder and say what to replace it with.
+
+Example:
+
+```bash
+docker rm -f <application_name> || true
+```
+
+Make sure to replace `<application_name>` with your application name.

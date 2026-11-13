@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital Solutions website
 
-## Getting Started
+The front end of [e4digitalsolutions.com](https://e4digitalsolutions.com). It is a Next.js (App Router) app whose content comes from a headless WordPress CMS through WPGraphQL. The coding standards are in [CLAUDE.md](CLAUDE.md) and [.claude/rules/](.claude/rules/).
 
-First, run the development server:
+## Getting started
+
+The package manager is Yarn. Don't use npm, pnpm or bun.
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Task | Command |
+|---|---|
+| Dev server | `yarn dev` |
+| Lint | `yarn lint` |
+| Type check | `yarn tsc --noEmit` |
+| Standalone production build | `yarn build:standalone` |
+| Run the standalone build locally | `yarn production:run` |
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+None are required yet. Server-only secrets go in `.env.local` locally and in `/opt/digital-solutions-website/.env` on the server. Both are kept out of git and out of the Docker image. When a variable is added, list its name (never its value) here.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app runs in a Docker container on an Ubuntu server, behind an Apache reverse proxy that handles HTTPS. The container listens on `127.0.0.1:3000` only. Images are stored in GitHub Container Registry (GHCR) as `ghcr.io/edwinb24/digital-solutions-website`, tagged with the short commit SHA and `latest`.
 
-## Deploy on Vercel
+### Release a new version
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run these on your computer, in Git Bash, in the project root.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Build the standalone app:
+   ```bash
+   yarn build:standalone
+   ```
+2. Commit your changes **together with the `.next/standalone` folder**, and push to `main`.
+
+   > **CAUTION:** The image is made from the committed `.next/standalone` folder. If you skip step 1, the previous build goes to production again.
+
+3. On GitHub, open **Actions → Deploy to production** and wait for the run to finish. It builds the image, pushes it to GHCR and replaces the container on the server.
+
+The workflow runs only when `.next/standalone/**`, `Dockerfile`, `.dockerignore` or `.github/workflows/deploy.yml` change. To run it again without a new commit, use **Run workflow** on the same page.
+
+> **NOTE:** The build runs on Windows, but the container runs Linux. Don't add packages with native binaries (such as `sharp`) to the runtime code: the Windows binary would be copied into the Linux image. This is why `next.config.ts` sets `images: {unoptimized: true}`.
+
+### Roll back to an earlier version
+
+Use this when the live version doesn't work. Nothing is rebuilt: GHCR keeps every image.
+
+1. Find the short SHA of the last version that worked, from `git log --oneline` or from the package page at https://github.com/edwinb24?tab=packages → **digital-solutions-website**.
+2. Connect to the server with SSH as your own user, then switch to the deploy user, which is logged in to GHCR:
+   ```bash
+   sudo -iu <deploy_user>
+   ```
+   Make sure to replace `<deploy_user>` with the name of the deploy user from your private server notes.
+3. Start the version that worked:
+   ```bash
+   sha=<last_good_sha>
+   docker pull ghcr.io/edwinb24/digital-solutions-website:$sha
+   docker rm -f digital-solutions-website
+   docker run -d --name digital-solutions-website --restart unless-stopped -p 127.0.0.1:3000:3000 --env-file /opt/digital-solutions-website/.env ghcr.io/edwinb24/digital-solutions-website:$sha
+   exit
+   ```
+   Make sure to replace `<last_good_sha>` with the short SHA from step 1.
+4. Do the steps in [Verify production](#verify-production).
+
+> **CAUTION:** A rollback changes only the server. `main` and the `latest` tag still point to the bad commit. Fix the problem or run `git revert <bad_sha>` before the next release. Replace `<bad_sha>` with the SHA of the commit that broke production.
+
+> **WARNING:** Always keep `127.0.0.1:` in the `-p` option. Without it, port 3000 is open to the internet and visitors can bypass Apache and HTTPS.
+
+### Verify production
+
+On the server, as your own user:
+
+```bash
+docker ps --format '{{.Names}} {{.Image}} {{.Status}}'
+curl -I http://127.0.0.1:3000
+```
+
+The container must show `Up` with the SHA you expect, and `curl` must return `200`. Then open https://e4digitalsolutions.com in a browser.
+
+### Maintenance
+
+- **GHCR token:** the deploy user pulls images with a classic GitHub token that has only `read:packages`. When it expires, deploys fail at `docker pull`. Make a new token and log the deploy user in again with `docker login ghcr.io`.
+- **Docker updates:** Docker comes from Docker's own apt repository, which automatic security updates don't cover. Update it now and then with `sudo apt-get update && sudo apt-get install --only-upgrade docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`. The container restarts by itself afterwards.
+- **Container logs** are capped at 30 MB per container (Docker's `json-file` driver, 3 files of 10 MB).

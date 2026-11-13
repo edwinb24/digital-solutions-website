@@ -81,3 +81,13 @@ docker rm -f <application_name> || true
 ```
 
 Make sure to replace `<application_name>` with your application name.
+
+## Production server
+
+- **Access:** the app runs on a DigitalOcean droplet. Reach it with the SSH alias from the local SSH config: `ssh -o BatchMode=yes e4-claude "<command>"`. The server details (address, users, keys, and what the `claude` user may run) are in the workspace `CLAUDE.md` one folder up. This repo is public: never write the server's IP address, user names or key paths in it.
+- **SSH limits:** the server bans IPs that open too many SSH connections. Put all checks into one `ssh` call, and make no more than about 3 connections in 5 minutes.
+- **Container:** one container named `digital-solutions-website`, from the image `ghcr.io/edwinb24/digital-solutions-website:<short_sha>`. It publishes `127.0.0.1:3000:3000` only, and Apache in front of it handles HTTPS for `e4digitalsolutions.com`. Never publish port 3000 without `127.0.0.1:`.
+- **Secrets:** production environment variables are in `/opt/digital-solutions-website/.env` on the server. Never read or print that file.
+- **Deploys:** `.github/workflows/deploy.yml` runs on a push to `main` that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow. Rollbacks and checks follow the "Deploying" section of `README.md`.
+- **Live version:** the image tag shown by `docker ps --format '{{.Image}}'` is the short SHA of the deployed commit.
+- **Changes need approval:** pulling or removing images, `docker rm`, `docker run`, restarts, editing files and installs all need the user's go-ahead. The GitHub Actions deploy key is only for CI; never use it for interactive access.

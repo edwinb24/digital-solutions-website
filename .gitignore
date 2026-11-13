@@ -14,7 +14,9 @@
 /coverage
 
 # next.js
-/.next/
+# The standalone build is committed: the deploy builds the Docker image from it.
+/.next/*
+!/.next/standalone
 /out/
 
 # production

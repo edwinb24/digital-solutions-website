@@ -1,0 +1,119 @@
+name: Deploy to production
+
+# The app is built locally with `yarn build:standalone` and the
+# .next/standalone folder is committed. This workflow only packages that
+# folder into a Docker image, pushes it to GHCR and restarts the container.
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - '.next/standalone/**'
+            - 'Dockerfile'
+            - '.dockerignore'
+            - '.github/workflows/deploy.yml'
+    workflow_dispatch:
+
+concurrency:
+    group: deploy
+    cancel-in-progress: false
+
+permissions:
+    contents: read
+    packages: write
+
+env:
+    IMAGE: ghcr.io/edwinb24/digital-solutions-website
+    CONTAINER: digital-solutions-website
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out the repository
+              uses: actions/checkout@v4
+
+            - name: Check that the standalone build is committed
+              run: |
+                  for path in .next/standalone/server.js .next/standalone/.next/static .next/standalone/public; do
+                    test -e "$path" || {
+                      echo "::error::$path is missing. Run yarn build:standalone and commit the whole .next/standalone folder."
+                      exit 1
+                    }
+                  done
+
+            - name: Get the short commit SHA
+              id: vars
+              run: echo "sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v3
+
+            - name: Build and push the image
+              uses: docker/build-push-action@v6
+              with:
+                  context: .
+                  platforms: linux/amd64
+                  push: true
+                  tags: |
+                      ${{ env.IMAGE }}:${{ steps.vars.outputs.sha }}
+                      ${{ env.IMAGE }}:latest
+                  labels: |
+                      org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+                  cache-from: type=gha
+                  cache-to: type=gha,mode=max
+
+            - name: Set up SSH
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+                  SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+              run: |
+                  mkdir -p ~/.ssh
+                  chmod 700 ~/.ssh
+                  # Strip Windows line endings, which OpenSSH rejects.
+                  printf '%s\n' "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+                  chmod 600 ~/.ssh/deploy_key
+                  printf '%s\n' "$SSH_KNOWN_HOSTS" | tr -d '\r' > ~/.ssh/known_hosts
+                  chmod 644 ~/.ssh/known_hosts
+                  # Fail early with a clear message if the key can't be read.
+                  # The fingerprint is safe to print; compare it with
+                  # `ssh-keygen -lf <key>.pub` on the machine that made the key.
+                  if ! ssh-keygen -y -f ~/.ssh/deploy_key > /tmp/deploy_key.pub 2>/dev/null; then
+                    echo "::error::SSH_PRIVATE_KEY is not a valid private key. Paste the whole private key file (BEGIN/END lines included), not the .pub file."
+                    exit 1
+                  fi
+                  echo "Deploy key fingerprint: $(ssh-keygen -lf /tmp/deploy_key.pub)"
+
+            - name: Deploy on the server
+              env:
+                  SSH_HOST: ${{ secrets.SSH_HOST }}
+                  SSH_USER: ${{ secrets.SSH_USER }}
+                  SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+                  IMAGE_TAG: ${{ env.IMAGE }}:${{ steps.vars.outputs.sha }}
+              run: |
+                  ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+                    "$SSH_USER@$SSH_HOST" "bash -s -- '$IMAGE_TAG' '$CONTAINER'" <<'EOF'
+                  set -euo pipefail
+                  IMAGE_TAG="$1"
+                  CONTAINER="$2"
+                  docker pull "$IMAGE_TAG"
+                  docker rm -f "$CONTAINER" || true
+                  docker run -d --name "$CONTAINER" --restart unless-stopped \
+                    -p 127.0.0.1:3000:3000 \
+                    --env-file "/opt/$CONTAINER/.env" \
+                    "$IMAGE_TAG"
+                  curl -fsS --retry 10 --retry-delay 2 --retry-all-errors http://127.0.0.1:3000 > /dev/null
+                  docker image prune -f
+                  echo "Deployed $IMAGE_TAG"
+                  EOF
+
+            - name: Remove the SSH key
+              if: always()
+              run: rm -f ~/.ssh/deploy_key

@@ -1,0 +1,8 @@
+# Ignore all files and folders in the project
+**
+
+# Do not ignore the prebuilt standalone app and everything in it
+!.next/standalone
+
+# Ignore the env files again so that no secrets go into the image
+.next/standalone/**/.env*

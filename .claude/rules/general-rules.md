@@ -27,7 +27,7 @@ Common commands:
 |---|---|
 | Dev server | `yarn dev` |
 | Standalone production build (needs user approval) | `yarn build:standalone` |
-| Run the standalone build | `yarn production:run` |
+| Run the standalone build (default port 3000) | `node .next/standalone/server.js` |
 | Lint | `yarn lint` |
 | Type check | `yarn tsc --noEmit` |
 | Unit and component tests | `yarn jest` |

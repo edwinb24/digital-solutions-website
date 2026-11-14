@@ -19,9 +19,9 @@ Open [http://localhost:3000](http://localhost:3000).
 | Lint | `yarn lint` |
 | Type check | `yarn tsc --noEmit` |
 | Standalone production build | `yarn build:standalone` |
-| Run the standalone build locally (Git Bash) | `PORT=3000 HOSTNAME=0.0.0.0 node .next/standalone/server.js` |
+| Run the standalone build locally | `node .next/standalone/server.js` |
 
-> **NOTE:** `yarn production:run` doesn't work on Windows. Yarn runs scripts with `cmd.exe`, which doesn't understand the `PORT=3000 ...` syntax. Run the command from the table in Git Bash instead.
+> **NOTE:** The standalone server listens on port 3000 on all network addresses by default, the same as in the container. Run `yarn build:standalone` first if the code changed: the server runs the last build.
 
 ## Environment variables
 

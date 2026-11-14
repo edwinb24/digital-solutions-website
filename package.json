@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build:standalone": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
-    "production:run": "PORT=3000 HOSTNAME=0.0.0.0 node .next/standalone/server.js",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:standalone": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"
   },
   "dependencies": {
     "@apollo/client": "^4.3.6",
@@ -31,5 +31,6 @@
     "eslint-config-next": "16.4.5",
     "jest": "^30.5.2",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@1.22.17"
 }

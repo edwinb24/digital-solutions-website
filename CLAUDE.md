@@ -65,7 +65,7 @@ Precedence: the user's instructions, then `general-rules.md`, then the domain ru
 
 ## Commands
 
-`yarn dev` · `yarn build:standalone` (approval required) · `yarn production:run` · `yarn lint` · `yarn tsc --noEmit` · `yarn jest` · `yarn playwright test` (once installed) · `yarn codegen` (once set up)
+`yarn dev` · `yarn build:standalone` (approval required) · `node .next/standalone/server.js` (run the standalone build) · `yarn lint` · `yarn tsc --noEmit` · `yarn jest` · `yarn playwright test` (once installed) · `yarn codegen` (once set up)
 
 ### Suggesting commands with values to replace
 

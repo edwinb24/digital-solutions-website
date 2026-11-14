@@ -23,11 +23,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment variables
 
-None are required yet. Server-only secrets go in `.env.local` locally and in `/opt/digital-solutions-website/.env` on the server. Both are kept out of git and out of the Docker image. When a variable is added, list its name (never its value) here.
+None are required yet. Server-only secrets go in `.env.local` locally and in `/opt/digital-solutions-website/.env` on the server. Both are kept out of git and out of the Docker image. When a variable is added, list its name (never its value) here, and keep a backup of the values in a password manager: they exist only in those two files.
 
 ## Deploying
 
-The app runs in a Docker container on an Ubuntu server, behind an Apache reverse proxy that handles HTTPS. The container listens on `127.0.0.1:3000` only. Images are stored in GitHub Container Registry (GHCR) as `ghcr.io/edwinb24/digital-solutions-website`, tagged with the short commit SHA and `latest`.
+The app runs in a Docker container on an Ubuntu server, behind an Apache reverse proxy that handles HTTPS. The container listens on `127.0.0.1:3000` only. Images are stored in GitHub Container Registry (GHCR) as `ghcr.io/edwinb24/digital-solutions-website`, tagged with the short commit SHA and `latest`. The package is public, like this repository, so the server pulls it without a login. The image contains only the committed `.next/standalone` folder, never a `.env` file.
 
 ### Release a new version
 
@@ -49,7 +49,19 @@ The workflow runs only when `.next/standalone/**`, `Dockerfile`, `.dockerignore`
 
 ### Roll back to an earlier version
 
-Use this when the live version doesn't work. Nothing is rebuilt: GHCR keeps every image.
+Use this when the live version doesn't work. There are two ways.
+
+#### Option A: re-run an earlier deploy in GitHub Actions
+
+1. On GitHub, open **Actions → Deploy to production**.
+2. Open the run of the last commit that worked, and click **Re-run all jobs**. The workflow packages that commit's `.next/standalone` again and deploys it with its own SHA tag.
+3. Do the steps in [Verify production](#verify-production).
+
+> **CAUTION:** After a re-run, `main` still points to the bad commit, and the next push deploys from `main` again. Fix the problem or run `git revert <bad_sha>` first. Replace `<bad_sha>` with the SHA of the commit that broke production.
+
+#### Option B: on the server
+
+Use this if GitHub Actions isn't available. Nothing is rebuilt: GHCR keeps every image.
 
 1. Find the short SHA of the last version that worked, from `git log --oneline` or from the package page at https://github.com/edwinb24?tab=packages → **digital-solutions-website**.
 2. Connect to the server with SSH as your own user, then switch to the deploy user, which is logged in to GHCR:

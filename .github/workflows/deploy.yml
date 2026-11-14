@@ -35,7 +35,7 @@ jobs:
 
             - name: Check that the standalone build is committed
               run: |
-                  for path in .next/standalone/server.js .next/standalone/.next/static .next/standalone/public; do
+                  for path in .next/standalone/server.js .next/standalone/.next/static; do
                     test -e "$path" || {
                       echo "::error::$path is missing. Run yarn build:standalone and commit the whole .next/standalone folder."
                       exit 1

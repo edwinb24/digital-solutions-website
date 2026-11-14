@@ -98,6 +98,12 @@ jobs:
                   SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
                   IMAGE_TAG: ${{ env.IMAGE }}:${{ steps.vars.outputs.sha }}
               run: |
+                  for name in SSH_HOST SSH_USER; do
+                    [ -n "${!name}" ] || {
+                      echo "::error::The $name repository secret is missing or empty."
+                      exit 1
+                    }
+                  done
                   ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
                     "$SSH_USER@$SSH_HOST" "bash -s -- '$IMAGE_TAG' '$CONTAINER'" <<'EOF'
                   set -euo pipefail

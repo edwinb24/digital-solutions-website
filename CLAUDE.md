@@ -84,10 +84,20 @@ Make sure to replace `<application_name>` with your application name.
 
 ## Production server
 
-- **Access:** the app runs on a DigitalOcean droplet. Reach it with the SSH alias from the local SSH config: `ssh -o BatchMode=yes e4-claude "<command>"`. The server details (address, users, keys, and what the `claude` user may run) are in the workspace `CLAUDE.md` one folder up. This repo is public: never write the server's IP address, user names or key paths in it.
+- **Access:** the app runs on a DigitalOcean droplet. Reach it with the SSH alias from the local SSH config: `ssh -o BatchMode=yes e4-claude "<command>"`. The server details (address, users, keys) are in the workspace `CLAUDE.md` one folder up. This repo is public: never write the server's IP address, user names or key paths in it.
 - **SSH limits:** the server bans IPs that open too many SSH connections. Put all checks into one `ssh` call, and make no more than about 3 connections in 5 minutes.
+- **Docker access:** the alias logs in as a read-only user that isn't in the `docker` or `sudo` groups. `sudo` allows only `docker ps`, `docker logs` and `docker images`, called as `sudo -n /usr/bin/docker ps|logs|images ...`. Everything else is denied, including `docker inspect`, which would print the `.env` secrets.
+- **The developer's own account** on the server is in the `docker` group, so commands you give the user run `docker` without `sudo`.
 - **Container:** one container named `digital-solutions-website`, from the image `ghcr.io/edwinb24/digital-solutions-website:<short_sha>`. It publishes `127.0.0.1:3000:3000` only, and Apache in front of it handles HTTPS for `e4digitalsolutions.com`. Never publish port 3000 without `127.0.0.1:`.
 - **Secrets:** production environment variables are in `/opt/digital-solutions-website/.env` on the server. Never read or print that file.
-- **Deploys:** `.github/workflows/deploy.yml` runs on a push to `main` that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow. Rollbacks and checks follow the "Deploying" section of `README.md`.
-- **Live version:** the image tag shown by `docker ps --format '{{.Image}}'` is the short SHA of the deployed commit.
-- **Changes need approval:** pulling or removing images, `docker rm`, `docker run`, restarts, editing files and installs all need the user's go-ahead. The GitHub Actions deploy key is only for CI; never use it for interactive access.
+- **Deploy key:** the GitHub Actions deploy key is only for CI. Never use it for interactive access.
+
+### Rules for working on the server
+
+- Read-only commands are fine to run when asked, for example:
+  ```bash
+  ssh -o BatchMode=yes e4-claude "sudo -n /usr/bin/docker ps; sudo -n /usr/bin/docker logs --tail 200 digital-solutions-website"
+  ```
+- Ask the user before any command that changes state: pulling or removing images, `docker rm`, `docker run`, restarts, editing files or installs. For these, give the user the command to run as their own account. Don't ask them to widen the read-only user's permissions.
+- For deploys and rollbacks, follow the "Deploying" section of `README.md`. Normal deploys run from `.github/workflows/deploy.yml` on a push to `main` that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow.
+- To find out which version is live, look at the image tag in `docker ps --format '{{.Image}}'`. The tag is the short SHA of the deployed commit.

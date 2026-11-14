@@ -158,12 +158,37 @@ Use this if GitHub Actions isn't available. Nothing is rebuilt: GHCR keeps every
 
 On the server, as your own user:
 
-```bash
-docker ps --format '{{.Names}} {{.Image}} {{.Status}}'
-curl -I http://127.0.0.1:3000
-```
+1. Make sure that the container shows `Up` with the SHA you expect:
+   ```bash
+   docker ps --format '{{.Names}} {{.Image}} {{.Status}}'
+   ```
+2. Make sure that the app returns `200`:
+   ```bash
+   curl -I http://127.0.0.1:3000
+   ```
+3. Make sure that the logs show `Ready` and no errors:
+   ```bash
+   docker logs digital-solutions-website
+   ```
+   A new container's log is short, so check it right after the deploy.
 
-The container must show `Up` with the SHA you expect, and `curl` must return `200`. Then open <https://e4digitalsolutions.com> in a browser.
+   > **NOTE:** Lines like `Error: The Server Reference ID did not match the expected format` come from internet scanners that send fake server-action requests. Next.js rejects them. They don't mean the deploy failed.
+4. Open <https://e4digitalsolutions.com> in a browser.
+
+### Common errors
+
+| Where | Error | Fix |
+|---|---|---|
+| GitHub Actions | `.next/standalone/server.js is missing` or `.next/standalone/.next/static is missing` | The standalone build isn't committed. Run `yarn build:standalone`, then `git add -A .next/standalone`, commit and push |
+| GitHub Actions | `The SSH_HOST repository secret is missing or empty` (or `SSH_USER`), or `usage: ssh ...` | A repository secret is missing or empty. Set it in **Settings → Secrets and variables → Actions → Repository secrets**, then use **Run workflow** |
+| Your computer | `failed to connect to the docker API` | Start Docker Desktop and wait for **Engine running** |
+| Your computer | `bash: =: command not found` | You used PowerShell syntax in Git Bash. Use `sha=$(git rev-parse --short HEAD)` |
+| Your computer | `tag does not exist` on `docker push` | The build didn't make that tag. Check `echo $sha`, then run `docker build` again |
+| Your computer | `denied` or `unauthorized` on `docker push` | Your `write:packages` token has expired or isn't logged in. Make a new one and run `docker login ghcr.io -u edwinb24` again |
+| The server | `denied` or `unauthorized` on `docker pull` | The package is public, so no login is needed. An old login may be getting in the way: run `docker logout ghcr.io` and pull again. If it still fails, check that the package page still shows **Public** |
+| The server | `syntax error near unexpected token 'newline'` | You typed a placeholder such as `<sha>`. Use the real value |
+| The server | `.env: permission denied` | Your user can't read `/opt/digital-solutions-website/.env`. Don't run `docker` with `sudo`. Check the file with `ls -l`: it must belong to the `docker` group with mode `640`, and your user must be in that group |
+| The server | `container name "/digital-solutions-website" is already in use` | Run `docker rm -f digital-solutions-website`, then `docker run` again |
 
 ### Maintenance
 

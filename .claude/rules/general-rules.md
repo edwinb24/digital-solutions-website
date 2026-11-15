@@ -127,7 +127,7 @@ Two kinds of name are exempt:
 | Component files | PascalCase, matching the component name | `ServiceEntry.tsx` |
 | Component CSS | Same name as the component plus `.module.css` | `ServiceEntry.module.css` |
 | Shared stylesheets | camelCase plus `.module.css` | `sharedStyles.module.css`, `globalFormStyles.module.css` |
-| Utility files | camelCase, named after the domain | `dateHandler.ts`, `stringHandler.ts` |
+| Utility files | `<domain>Handler.ts`, named after the domain | `dateHandler.ts`, `stringHandler.ts` |
 | Custom icon files | camelCase plus `Icon` | `utils/icons/tiktokIcon.tsx` |
 | GraphQL query files | `useGet<Thing>Query.ts` | `useGetServiceListQuery.ts` |
 | Components | PascalCase, with a role suffix or prefix (see `frontend/component-rules.md`) | `ServicesContent`, `ServiceEntry`, `SharedModal` |

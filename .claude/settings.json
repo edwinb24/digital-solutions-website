@@ -1,31 +1,31 @@
 {
-  "permissions": {
-    "ask": [
-      "Bash(yarn add:*)",
-      "Bash(yarn remove:*)",
-      "Bash(yarn upgrade:*)",
-      "Bash(yarn upgrade-interactive:*)",
-      "Bash(yarn global:*)",
-      "Bash(yarn build:standalone:*)",
-      "Bash(yarn next build:*)",
-      "Bash(npx next build:*)",
-      "Bash(next build:*)"
-    ],
-    "deny": [
-      "Bash(npm install:*)",
-      "Bash(npm i:*)",
-      "Bash(npm ci:*)",
-      "Bash(npm uninstall:*)",
-      "Bash(npm update:*)",
-      "Bash(pnpm:*)",
-      "Bash(bun:*)",
-      "Read(./.env*)",
-      "Edit(**/*.generated.ts)",
-      "Edit(types/__generated__/**)",
-      "Edit(yarn.lock)",
-      "Write(**/*.generated.ts)",
-      "Write(types/__generated__/**)",
-      "Write(yarn.lock)"
-    ]
-  }
+    "permissions": {
+        "ask": [
+            "Bash(yarn add:*)",
+            "Bash(yarn remove:*)",
+            "Bash(yarn upgrade:*)",
+            "Bash(yarn upgrade-interactive:*)",
+            "Bash(yarn global:*)",
+            "Bash(yarn build:standalone:*)",
+            "Bash(yarn next build:*)",
+            "Bash(npx next build:*)",
+            "Bash(next build:*)",
+            "Bash(npm install:*)",
+            "Bash(npm i:*)"
+        ],
+        "deny": [
+            "Bash(npm ci:*)",
+            "Bash(npm uninstall:*)",
+            "Bash(npm update:*)",
+            "Bash(pnpm:*)",
+            "Bash(bun:*)",
+            "Read(./.env*)",
+            "Edit(**/*.generated.ts)",
+            "Edit(types/__generated__/**)",
+            "Edit(yarn.lock)",
+            "Write(**/*.generated.ts)",
+            "Write(types/__generated__/**)",
+            "Write(yarn.lock)"
+        ]
+    }
 }

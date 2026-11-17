@@ -25,8 +25,8 @@ These extend `.claude/rules/general-rules.md` and `backend-rules.md`.
 - **Template:**
 
   ```ts
-  import {gql, TypedDocumentNode} from '@apollo/client'
-  import {
+  import {gql, type TypedDocumentNode} from '@apollo/client'
+  import type {
       GetAllServicesQuery,
       GetAllServicesQueryVariables,
   } from './useGetAllServicesQuery.generated'
@@ -68,7 +68,7 @@ These extend `.claude/rules/general-rules.md` and `backend-rules.md`.
 - **Look up single nodes** by global ID (constants `*_PAGE_ID`) or by slug or URI with `idType` (`service(id: $slug, idType: SLUG)`). Dynamic routes use the slug.
 - **ACF fields** are read through their GraphQL field-group name (`serviceFields { ... }`). Use the exact field names from the schema. Never guess.
 - **Images:** request `sourceUrl` and `altText`, plus `mediaDetails {width height}` when the layout needs the real dimensions.
-- **CMS HTML fields** (`content`, `description`) arrive as rendered HTML strings. The UI renders them with `parse(...)`.
+- **CMS HTML fields** (`content`, `description`) arrive as rendered HTML strings. The UI renders them with `parseCmsHtml(...)`.
 - **One request per page.** Combine what a page needs into a single operation (for example the page post plus the list it shows) so you avoid waterfalls.
 - **Mutations** need WordPress authentication. Run them only on the server (server action or route handler), with credentials from server-only environment variables.
 
@@ -79,7 +79,7 @@ Codegen is not set up yet. Setting it up needs approval for the `@graphql-codege
 - `codegen.ts` lives at the project root and follows these conventions (check option names against the current Codegen docs):
 
   ```ts
-  import {CodegenConfig} from '@graphql-codegen/cli'
+  import type {CodegenConfig} from '@graphql-codegen/cli'
 
   const config: CodegenConfig = {
       overwrite: true,

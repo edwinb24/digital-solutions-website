@@ -22,7 +22,8 @@ These extend `.claude/rules/general-rules.md` and `backend-rules.md`. Every agen
 
 ## 2. CMS content
 
-- **Not a sanitizer.** `html-react-parser` turns HTML into React elements, but it does **not** sanitize. Use `parse(...)` only for HTML written by trusted CMS editors. Never use it for content submitted by site visitors or third parties. If untrusted HTML ever has to be rendered, propose a sanitizer under the package policy.
+- **One entry point for CMS HTML.** All CMS HTML goes through `parseCmsHtml()` in `app/utils/htmlHandler.ts`, the only file that may import `html-react-parser` (`yarn lint` enforces this). The file doesn't exist yet: create it before the first component renders CMS HTML.
+- **Not a sanitizer.** `html-react-parser` turns HTML into React elements, but it does **not** sanitize. Use `parseCmsHtml()` only for HTML written by trusted CMS editors. Never use it for content submitted by site visitors or third parties. If untrusted HTML ever has to be rendered, propose a sanitizer under the package policy.
 - **No `dangerouslySetInnerHTML`.**
 - **Public data only.** The site queries only published, public content. Draft, private or preview content needs authenticated server-side requests and explicit user approval.
 

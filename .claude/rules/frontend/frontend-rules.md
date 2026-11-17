@@ -26,7 +26,7 @@ page.tsx (server)            → fetches with getClient().query(...), guards err
 
 - **One body component per page.** Each page renders a single `<FeatureName>Content` component, which contains the page's `<main>`.
 - **Props types.** Content components are typed with the generated query type (for example `servicesPageData: GetServicesPageQuery`) when they receive the raw query result. When they receive flattened fields, they use a `Type*` shape from `app/SharedTypes.ts`.
-- **CMS HTML** (`content`, `description`) is rendered with `parse(...)` from `html-react-parser`. Never use `dangerouslySetInnerHTML`.
+- **CMS HTML** (`content`, `description`) is rendered only with `parseCmsHtml(...)` from `@/app/utils/htmlHandler`. Never import `html-react-parser` in a component and never use `dangerouslySetInnerHTML`.
 - **No fetching in UI components.** They must not call `getClient()`, `fetch` the CMS or define GraphQL documents. They receive data as props. Ask the backend-developer for any data you are missing.
 
 ## 3. Root layout and shared chrome

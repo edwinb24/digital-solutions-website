@@ -31,7 +31,8 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 - Long, descriptive camelCase names. Components are PascalCase in snake_case folders, and routes are kebab-case.
 - A one-line purpose comment above every named function, including components and handlers.
 - Components are server components by default. `'use client'` goes on line 1, only for state, effects or events.
-- **Plain CSS only.** CSS Modules, no styling libraries or frameworks, no `sx`, no inline `style`. MUI is allowed for icons only (`@mui/icons-material`). Missing icons become `SvgIcon` components in `app/utils/icons/`.
+- **Plain CSS only.** CSS Modules, no styling libraries or frameworks, no `sx`, no inline `style`. Custom icons are plain `<svg>` components in `app/utils/icons/`: no `'use client'`, no MUI import, `aria-hidden` by default, `fill='currentColor'`, sized with `1em`. `@mui/icons-material` only inside client components, and never an `@mui/material` import.
+- **Fonts** load only with `next/font` in `app/layout.tsx`, never a hand-written `@font-face`, a Google Fonts `<link>` or `@import`.
 - **The only media query allowed:** `@media only screen and (max-width: 850px)`, written desktop first and placed at the end of the file.
 - All colors and fonts come from `:root` variables, and every non-zero length has a unit.
 

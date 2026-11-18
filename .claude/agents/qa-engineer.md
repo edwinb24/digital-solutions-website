@@ -19,7 +19,7 @@ If these files conflict, general-rules.md takes precedence. If you find a contra
 ## Tooling
 
 - **Jest** for unit tests. **Jest with React Testing Library** for component tests. **Playwright** for end-to-end tests.
-- `jest` is installed. React Testing Library, `jest-environment-jsdom`, `@testing-library/jest-dom`, `@testing-library/user-event`, `@types/jest`, `ts-node` and `@playwright/test` are **not installed** yet. If a task needs them, list exactly which ones in a package proposal (general-rules section 4) and stop until the user approves. Never install them yourself.
+- Installed: `jest`, `jest-environment-jsdom`, React Testing Library (`@testing-library/react`, `@testing-library/dom`, `@testing-library/jest-dom`, `@testing-library/user-event`), `@types/jest` and `@playwright/test`. `ts-node` is not used: Jest reads `jest.config.ts` through Node's built-in TypeScript support. If a task needs another package, list it in a package proposal (general-rules section 4) and stop until the user approves. Never install one yourself.
 
 ## Responsibilities
 

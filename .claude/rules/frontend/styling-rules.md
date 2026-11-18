@@ -18,7 +18,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 
 | File | Purpose | Imported as |
 |---|---|---|
-| `app/globals.css` | `:root` custom properties (colors, fonts), `@font-face`, base element colors | `import './globals.css'` in `layout.tsx` |
+| `app/globals.css` | `:root` custom properties (colors, and `--style-font-family` mapped from the `next/font` variable), base element colors | `import './globals.css'` in `layout.tsx` |
 | `app/reset.css` | Reset rules and the body grid (`header` / `main` / `footer` areas) | `import './reset.css'` in `layout.tsx` |
 | `app/sharedStyles.module.css` | Layout classes shared across pages (`pageNarrowWrapper`, `pageWideWrapper`, `mainTitle`) | `sharedClasses` |
 | `app/globalFormStyles.module.css` | Form classes (`form`, `formField`, `formFieldErrorMessage`, `submitButton`) | `formClasses` |
@@ -100,3 +100,10 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 - Multi-value properties (`grid-template-areas`, multi-source `src`) put each value on its own indented line.
 - Use child (`>`) and descendant selectors on module classes. No ID selectors, no `!important` and no native CSS nesting.
 - Global stylesheets group their rules under `/* Section Name */` headings.
+
+## 8. Fonts
+
+- Fonts load **only** with `next/font` in `app/layout.tsx`, which self-hosts the files and avoids layout shift.
+- Each font sets `display: 'swap'` and a CSS variable, for example `variable: '--manrope-font'`. Put the font's `variable` class on `<html>`.
+- `globals.css` maps that variable to the font custom property: `--style-font-family: var(--manrope-font), sans-serif;`. Components use `var(--style-font-family)`, never the font variable directly.
+- Never use a hand-written `@font-face`, a Google Fonts `<link>` or a CSS `@import` for fonts.

@@ -20,20 +20,12 @@ These extend `.claude/rules/general-rules.md`. Test code follows the same format
 | Component tests | **Jest** with **React Testing Library** | `yarn jest` |
 | End-to-end tests | **Playwright** | `yarn playwright test` |
 
-- `jest` is installed.
-- Before component and end-to-end tests can run, these packages need user approval and installation (general-rules section 4):
-  - `@testing-library/react` and `@testing-library/dom`
-  - `jest-environment-jsdom`
-  - `@testing-library/jest-dom`
-  - `@testing-library/user-event`
-  - `@types/jest`
-  - `ts-node` (for a TypeScript Jest config)
-  - `@playwright/test`
+- Installed: `jest`, `jest-environment-jsdom`, `@testing-library/react` and `@testing-library/dom`, `@testing-library/jest-dom`, `@testing-library/user-event`, `@types/jest` and `@playwright/test`. Any other package goes through the package policy (general-rules section 4).
 - Do not use other test runners, assertion libraries or mocking libraries (Vitest, Mocha, Cypress, Enzyme, MSW) without approval.
 
 ## 2. Configuration
 
-- **`jest.config.ts`** at the root uses `next/jest` (`nextJest({dir: './'})`). It sets:
+- **`jest.config.ts`** at the root uses `next/jest` (`nextJest({dir: './'})`). Jest reads it through Node's built-in TypeScript support (type stripping, on by default from Node 22.18), so `ts-node` is not installed. The file may use only erasable TypeScript syntax: type annotations and `import type`, but no `enum` or `namespace`. It sets:
   - `testEnvironment: 'jsdom'`
   - `setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']`, where `jest.setup.ts` imports `@testing-library/jest-dom`
   - `moduleNameMapper: {'^@/(.*)$': '<rootDir>/$1'}` to match the `@/*` alias
@@ -41,10 +33,10 @@ These extend `.claude/rules/general-rules.md`. Test code follows the same format
   - coverage settings from `test-coverage-rules.md`
 - **`playwright.config.ts`** at the root sets:
   - `testDir: './e2e'`
-  - a `webServer` that runs the app (`node .next/standalone/server.js` after an approved `yarn build:standalone`, or `yarn dev` locally)
+  - a `webServer` that runs the app (`node .next/standalone/server.js` after an approved `yarn build:standalone`, or `yarn dev` locally) and waits for it with `url` (for example `'http://localhost:3000'`), not `port`
   - `baseURL`
   - two projects: desktop, and a mobile viewport narrower than the 850px breakpoint (for example 390px wide)
-- **`package.json` scripts** (`"test": "jest"`, `"test:e2e": "playwright test"`) are added only with user approval.
+- **`package.json` scripts** `"test": "jest"` and `"test:e2e": "playwright test"` are in place. Adding or changing a script needs user approval.
 
 ## 3. File placement and naming
 

@@ -86,24 +86,35 @@ Component files never declare module-level constants. Every constant goes in `ap
 
 ## 7. Icons
 
-- **MUI icons:** use `@mui/icons-material` with named imports (`import {Close, Email} from '@mui/icons-material'`).
-- **Custom icons:** if an icon does not exist in `@mui/icons-material`, create it in `app/utils/icons/<name>Icon.tsx` by wrapping `SvgIcon`:
+- **Custom icons** (logos, chess pieces and any other drawing) are plain `<svg>` components in `app/utils/icons/<name>Icon.tsx`. They work as server components, so each one:
+  - has no `'use client'` and imports nothing from MUI.
+  - sets a `viewBox`, `fill='currentColor'`, and a `width` and `height` of `'1em'`, so it follows its parent's `font-size` and `color`.
+  - is hidden from assistive technology by default (`aria-hidden='true'`, `focusable='false'`). When an icon carries meaning, its parent gives the accessible name (for example the button's label).
+  - accepts `React.SVGProps<SVGSVGElement>` and spreads them last, so a CSS Module `className` can size and color it.
 
   ```tsx
-  import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon'
-  import React from 'react'
+  import type React from 'react'
 
-  // Renders the TikTok logo as an icon compatible with @mui/icons-material
-  const TiktokIcon: React.FC<SvgIconProps> = props => (
-      <SvgIcon {...props} viewBox='0 0 24 24'>
-          <path d='...' />
-      </SvgIcon>
-  )
-
-  export default TiktokIcon
+  // Renders the TikTok logo as a decorative inline SVG icon
+  export default function TiktokIcon(props: React.SVGProps<SVGSVGElement>) {
+      return (
+          <svg
+              aria-hidden='true'
+              fill='currentColor'
+              focusable='false'
+              height='1em'
+              viewBox='0 0 24 24'
+              width='1em'
+              {...props}
+          >
+              <path d='...' />
+          </svg>
+      )
+  }
   ```
 
-- **Sizing and color** come only from CSS Modules. Pass `fontSize='inherit'` and put the size and `color` on a wrapper or `className` in the CSS Module. The icon follows `font-size` and `currentColor`. Never use `sx`, `style` or `styled`.
+- **MUI icons:** `@mui/icons-material` may be imported only inside client components (files with `'use client'`), with named imports (`import {Close, Email} from '@mui/icons-material'`). A server component that needs an icon uses a custom icon instead. Nothing is ever imported from `@mui/material`.
+- **Sizing and color** come only from CSS Modules: set `font-size` and `color` on a wrapper or a `className`. Custom icons follow them through `1em` and `currentColor`. MUI icons follow them with `fontSize='inherit'`. Never use `sx`, `style` or `styled`.
 - **Icon maps** (platform to icon) live in `constants.tsx` as `new Map([[ENUM.value, <Icon key={`${ENUM.value}`} />]])`.
 
 ## 8. Reference example

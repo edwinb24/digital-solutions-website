@@ -1,0 +1,17 @@
+/* Custom Properties */
+
+:root {
+    --main-color: #111111;
+    --main-alternative-color: #202023;
+    --secondary-color: #030623;
+    --font-color: #eeeeee;
+    --style-font-family: var(--manrope-font), sans-serif;
+}
+
+/* Base Elements */
+
+body {
+    background-color: var(--main-alternative-color);
+    color: var(--font-color);
+    font-family: var(--style-font-family);
+}

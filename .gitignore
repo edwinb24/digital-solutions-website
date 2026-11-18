@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
 
 # next.js
 # The standalone build is committed: the deploy builds the Docker image from it.

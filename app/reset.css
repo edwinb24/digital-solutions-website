@@ -1,0 +1,69 @@
+/* Box Model */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Spacing */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+figure {
+    margin: 0;
+}
+
+ol,
+ul {
+    padding: 0;
+}
+
+/* Media */
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Form Controls */
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* Body Grid */
+
+body {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+}
+
+body > header {
+    grid-area: header;
+}
+
+body > main {
+    grid-area: main;
+}
+
+body > footer {
+    grid-area: footer;
+}

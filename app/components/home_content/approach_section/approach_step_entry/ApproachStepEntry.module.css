@@ -1,0 +1,15 @@
+.approachStepEntry {
+    padding-top: 18px;
+    border-top: 3px solid var(--secondary-color);
+}
+
+.approachStepEntryTitle {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.approachStepEntryDescription {
+    color: color-mix(in srgb, var(--main-color) 70%, transparent);
+    font-size: 15px;
+    line-height: 1.5;
+}

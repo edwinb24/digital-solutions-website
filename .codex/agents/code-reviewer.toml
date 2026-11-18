@@ -38,7 +38,8 @@ You are the **code reviewer** for this project. You make sure every other agent 
 
 **Frontend**
 - Server components by default, with `'use client'` on line 1 only when needed. No data fetching in UI components.
-- **Plain CSS Modules only.** No styling libraries or frameworks, `sx`, `styled` or inline `style`. MUI is used only for icons. Custom icons wrap `SvgIcon` in `app/utils/icons/`.
+- **Plain CSS Modules only.** No styling libraries or frameworks, `sx`, `styled` or inline `style`. Custom icons are plain `<svg>` components in `app/utils/icons/`: no `'use client'`, no MUI import, `aria-hidden` by default, `fill='currentColor'`, sized with `1em`. `@mui/icons-material` only inside client components, and never an `@mui/material` import.
+- **Fonts** load only with `next/font` in `app/layout.tsx`, never a hand-written `@font-face`, a Google Fonts `<link>` or `@import`.
 - **Single media query:** `@media only screen and (max-width: 850px)`, one block at the end of the file. No other breakpoints.
 - **CSS values:** units on every non-zero length, colors and fonts from variables, camelCase class names.
 - **Next.js primitives:** `Link` and `Image` used correctly, semantic HTML, no `Link` inside a `<button>`, `rel` on `_blank` links.

@@ -1,0 +1,51 @@
+.chessBoard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 1500px;
+    transform: translate(-50%, -50%) rotate(-8deg);
+}
+
+.chessBoardSquare {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+}
+
+.chessBoardLightSquare {
+    background-color: var(--board-light-square-color);
+}
+
+.chessBoardDarkSquare {
+    background-color: var(--board-dark-square-color);
+}
+
+.chessBoardHighlightedSquare {
+    box-shadow: inset 0 0 0 3px
+        color-mix(in srgb, var(--font-color) 55%, transparent);
+}
+
+.chessBoardPiece {
+    display: grid;
+    color: var(--font-color);
+    font-size: 130px;
+    filter: drop-shadow(
+        0 6px 14px color-mix(in srgb, var(--main-color) 55%, transparent)
+    );
+}
+
+.chessBoardMutedPiece {
+    color: var(--muted-piece-color);
+}
+
+@media only screen and (max-width: 850px) {
+    .chessBoard {
+        width: 900px;
+    }
+
+    .chessBoardPiece {
+        font-size: 78px;
+    }
+}

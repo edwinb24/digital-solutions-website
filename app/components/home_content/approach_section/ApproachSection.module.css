@@ -1,0 +1,30 @@
+.approachSection {
+    padding-top: 84px;
+    padding-bottom: 84px;
+    background-color: var(--font-color);
+    color: var(--main-color);
+}
+
+.approachSectionTitle {
+    margin-bottom: 40px;
+    font-size: 50px;
+    letter-spacing: -0.03em;
+}
+
+.approachSectionSteps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    padding-left: 0;
+    list-style: none;
+}
+
+@media only screen and (max-width: 850px) {
+    .approachSectionTitle {
+        font-size: 34px;
+    }
+
+    .approachSectionSteps {
+        grid-template-columns: 1fr;
+    }
+}

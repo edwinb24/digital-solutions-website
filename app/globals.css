@@ -5,6 +5,9 @@
     --main-alternative-color: #202023;
     --secondary-color: #030623;
     --font-color: #eeeeee;
+    --board-light-square-color: #2a2d3c;
+    --board-dark-square-color: #0b0e2c;
+    --muted-piece-color: #7d86b0;
     --style-font-family: var(--manrope-font), sans-serif;
 }
 

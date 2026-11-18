@@ -1,0 +1,47 @@
+.hamburgerMenu,
+.hamburgerMenuPanel {
+    display: contents;
+}
+
+.hamburgerMenuButton {
+    display: none;
+}
+
+@media only screen and (max-width: 850px) {
+    .hamburgerMenu {
+        display: block;
+        justify-self: end;
+    }
+
+    .hamburgerMenuButton {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid color-mix(in srgb, var(--font-color) 14%, transparent);
+        border-radius: 999px;
+        background-color: var(--main-color);
+        color: var(--font-color);
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    .hamburgerMenuPanel {
+        display: none;
+    }
+
+    .hamburgerMenuPanelOpen {
+        position: absolute;
+        top: 72px;
+        right: 16px;
+        left: 16px;
+        z-index: 10;
+        display: flex;
+        flex-flow: column;
+        gap: 16px;
+        padding: 16px;
+        border: 1px solid color-mix(in srgb, var(--font-color) 14%, transparent);
+        border-radius: 16px;
+        background-color: var(--main-color);
+    }
+}

@@ -101,3 +101,13 @@ Make sure to replace `<application_name>` with your application name.
 - Ask the user before any command that changes state: pulling or removing images, `docker rm`, `docker run`, restarts, editing files or installs. For these, give the user the command to run as their own account. Don't ask them to widen the read-only user's permissions.
 - For deploys and rollbacks, follow the "Deploying" section of `README.md`. Normal deploys run from `.github/workflows/deploy.yml` on a push to `main` that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow.
 - To find out which version is live, look at the image tag in `docker ps --format '{{.Image}}'`. The tag is the short SHA of the deployed commit.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

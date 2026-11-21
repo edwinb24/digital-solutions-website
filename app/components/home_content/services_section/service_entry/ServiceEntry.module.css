@@ -1,0 +1,41 @@
+.serviceEntry {
+    display: grid;
+    grid-template-areas:
+        'serviceEntryNumberLabel serviceEntryIcon'
+        'serviceEntryTitle serviceEntryTitle'
+        'serviceEntryDescription serviceEntryDescription';
+    grid-template-columns: 1fr auto;
+    align-content: start;
+    padding-top: 36px;
+    padding-right: 32px;
+    padding-bottom: 36px;
+    padding-left: 32px;
+    background-color: var(--main-color);
+}
+
+.serviceEntryNumberLabel {
+    grid-area: serviceEntryNumberLabel;
+    color: color-mix(in srgb, var(--font-color) 50%, transparent);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+}
+
+.serviceEntryIcon {
+    display: grid;
+    grid-area: serviceEntryIcon;
+    color: color-mix(in srgb, var(--font-color) 90%, transparent);
+    font-size: 54px;
+}
+
+.serviceEntryTitle {
+    grid-area: serviceEntryTitle;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    font-size: 26px;
+}
+
+.serviceEntryDescription {
+    grid-area: serviceEntryDescription;
+    color: color-mix(in srgb, var(--font-color) 70%, transparent);
+    line-height: 1.55;
+}

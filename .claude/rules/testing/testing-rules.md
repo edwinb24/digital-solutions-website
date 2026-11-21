@@ -51,6 +51,8 @@ These extend `.claude/rules/general-rules.md`. Test code follows the same format
 
 - **Structure:** `describe('<ComponentOrFunctionName>', ...)`, with `it('<does something> when <condition>', ...)` sentences that describe behavior. Each test follows Arrange, Act, Assert, with one blank line between the steps.
 - **Test behavior, not implementation.** Assert what the user sees or what a function returns. Do not assert on internal state, class names or call order unless that is the behavior.
+  - **Two-edit check:** judge each test against two imagined edits. Break the behavior (a wrong value, a skipped or doubled effect): the test must fail. Change only the internals and keep every visible result: the test must still pass. Rewrite or delete a test that fails either check.
+  - Derive the expected value from the requirement, never from the code under test, and never assert on data the test built itself.
 - **Query priority (React Testing Library):**
   1. `getByRole`
   2. `getByLabelText`

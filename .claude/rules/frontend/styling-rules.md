@@ -44,6 +44,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 
 - **Units:** every non-zero length has a unit (`px`, `rem`, `em`, `%`, `vw`, `vh`). Unitless lengths such as `padding: 10;` are invalid CSS and are not allowed. Only `0` may be unitless.
 - **Fluid sizing:** use `min()`, `max()` and `calc()`, for example `width: min(100vw, 1200px)` and `font-size: calc(14px + (18 - 14) * ((100vw - 600px) / (1600 - 600)))`.
+- **No oversized "magic maximum" lengths.** Never write `border-radius: 999px` (or `9999px`, `100vmax` and the like) to get fully rounded corners. When the goal is simply "as much as possible", use a percentage, which says what it means: `border-radius: 100%` instead of `border-radius: 999px`. The two aren't identical, but both give fully rounded corners, and `100%` is far easier to read.
 - **Spacing:** when the sides differ, write each side as a longhand property (`padding-top`, `padding-left`, `margin-left: auto`, `margin-right: auto`). Use a shorthand only when all sides are equal.
 - **Hex colors** (only in `globals.css`) are lowercase.
 - **Strings** in CSS use single quotes: `font-family: 'Display Font'`, `grid-template-areas: 'header' 'main' 'footer'`.
@@ -80,7 +81,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
     color: var(--font-color);
 }
 
-.serviceEntry > li,
+.serviceEntryItem,
 .serviceEntryLink:hover {
     color: var(--secondary-color);
 }
@@ -98,8 +99,53 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 - 4-space indentation, one declaration per line, a space after `:` and a semicolon after every declaration.
 - One blank line between rule blocks. When a rule has several selectors, put each on its own line.
 - Multi-value properties (`grid-template-areas`, multi-source `src`) put each value on its own indented line.
-- Use child (`>`) and descendant selectors on module classes. No ID selectors, no `!important` and no native CSS nesting.
+- No ID selectors, no `!important` and no native CSS nesting.
 - Global stylesheets group their rules under `/* Section Name */` headings.
+
+### Selectors: one class per element, no combinators
+
+- **Strongly avoid the child (`>`) and adjacent-sibling (`+`) combinators.** Give each element you style its own class instead, with a compound name built from its parent's class: `.siteFooterLinks` → `.siteFooterLinksItem`. Each rule then reads on its own, survives markup changes, and keeps every selector at the same specificity.
+- **Positional styles become a class the component sets.** Where a selector would pick elements by position (`li + li`, `:first-child`), add a class in the JSX when rendering the list (for example from the `map` index) and style that class.
+- Before writing `>` or `+`, try a class. Use one only when no class can do the job, and say why in the reply.
+- **Exception: list items.** `>` may select the items of a list (`ul > li`, `ol > li`), with the class on the list: `.siteFooterLinks > li`. The `+` combinator has no exception.
+
+Instead of:
+
+```css
+.siteFooterLinks > li + li {
+    margin-left: 12px;
+}
+```
+
+Write:
+
+```css
+.siteFooterLinksItemSeparated {
+    margin-left: 12px;
+}
+```
+
+### Content belongs in the markup
+
+- **Put text, icons, arrows and separators in the JSX, not in the CSS `content` property.** Content in the page is read by screen readers, search engines, translation tools and copy-and-paste, and lives next to the rest of the component's text. Hide a purely decorative character from screen readers with `aria-hidden='true'`.
+- Before writing `content`, try the markup. Use it only when markup can't do the job, say why in the reply, and give a decorative value empty alternative text: `content: '→' / '';`.
+
+Instead of:
+
+```css
+.serviceEntryLink::after {
+    content: ' →';
+}
+```
+
+Write:
+
+```tsx
+<Link className={classes.serviceEntryLink} href={serviceLink}>
+    {'Learn more '}
+    <span aria-hidden='true'>{'→'}</span>
+</Link>
+```
 
 ## 8. Fonts
 

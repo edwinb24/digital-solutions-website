@@ -80,7 +80,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
     color: var(--font-color);
 }
 
-.serviceEntry > li,
+.serviceEntryItem,
 .serviceEntryLink:hover {
     color: var(--secondary-color);
 }
@@ -98,8 +98,34 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 - 4-space indentation, one declaration per line, a space after `:` and a semicolon after every declaration.
 - One blank line between rule blocks. When a rule has several selectors, put each on its own line.
 - Multi-value properties (`grid-template-areas`, multi-source `src`) put each value on its own indented line.
-- Use child (`>`) and descendant selectors on module classes. No ID selectors, no `!important` and no native CSS nesting.
+- No ID selectors, no `!important` and no native CSS nesting.
 - Global stylesheets group their rules under `/* Section Name */` headings.
+
+### Selectors: one class per element, no combinators
+
+- **Strongly avoid the child (`>`) and adjacent-sibling (`+`) combinators.** Give each element you style its own class instead, with a compound name built from its parent's class: `.siteFooterLinks` → `.siteFooterLinksItem`. Each rule then reads on its own, survives markup changes, and keeps every selector at the same specificity.
+- **Positional styles become a class the component sets.** Where a selector would pick elements by position (`li + li`, `:first-child`), add a class in the JSX when rendering the list (for example from the `map` index) and style that class.
+- Before writing `>` or `+`, try a class. Use one only when no class can do the job, and say why in the reply.
+
+Instead of:
+
+```css
+.siteFooterLinks > li + li::before {
+    content: '·';
+}
+```
+
+Write:
+
+```css
+.siteFooterLinksItem {
+    display: inline-flex;
+}
+
+.siteFooterLinksItemSeparated::before {
+    content: '·';
+}
+```
 
 ## 8. Fonts
 

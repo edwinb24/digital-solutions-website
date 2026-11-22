@@ -1,0 +1,87 @@
+.homeBanner {
+    position: relative;
+    height: 760px;
+    overflow: hidden;
+    background-color: var(--secondary-color);
+}
+
+.homeBannerBackdrop {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at 50% 55%,
+            color-mix(in srgb, var(--secondary-color) 60%, transparent),
+            color-mix(in srgb, var(--secondary-color) 90%, transparent) 70%
+        ),
+        linear-gradient(transparent 60%, var(--main-alternative-color));
+}
+
+.homeBannerContent {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-right: 16px;
+    padding-left: 16px;
+    color: var(--font-color);
+    text-align: center;
+}
+
+.homeBannerEyebrow {
+    margin-bottom: 20px;
+    color: color-mix(in srgb, var(--font-color) 75%, transparent);
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.homeBannerHeadline {
+    max-width: 11em;
+    font-size: 84px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-shadow: 0 8px 40px
+        color-mix(in srgb, var(--main-color) 60%, transparent);
+}
+
+.homeBannerParagraph {
+    max-width: 620px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    color: color-mix(in srgb, var(--font-color) 85%, transparent);
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.homeBannerCallToAction {
+    display: inline-block;
+    padding-top: 15px;
+    padding-right: 28px;
+    padding-bottom: 15px;
+    padding-left: 28px;
+    border-radius: 6px;
+    background-color: var(--font-color);
+    color: var(--main-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 850px) {
+    .homeBanner {
+        height: 640px;
+    }
+
+    .homeBannerHeadline {
+        font-size: 44px;
+    }
+
+    .homeBannerParagraph {
+        font-size: 17px;
+    }
+}

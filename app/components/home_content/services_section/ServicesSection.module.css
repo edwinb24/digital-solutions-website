@@ -1,0 +1,31 @@
+.servicesSection {
+    padding-top: 30px;
+    padding-bottom: 90px;
+}
+
+.servicesSectionTitle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.servicesSectionList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    padding-left: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--font-color) 14%, transparent);
+    border-radius: 14px;
+    background-color: color-mix(in srgb, var(--font-color) 14%, transparent);
+    list-style: none;
+}
+
+@media only screen and (max-width: 850px) {
+    .servicesSectionList {
+        grid-template-columns: 1fr;
+    }
+}

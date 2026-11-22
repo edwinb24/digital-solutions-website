@@ -111,21 +111,39 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 Instead of:
 
 ```css
-.siteFooterLinks > li + li::before {
-    content: '·';
+.siteFooterLinks > li + li {
+    margin-left: 12px;
 }
 ```
 
 Write:
 
 ```css
-.siteFooterLinksItem {
-    display: inline-flex;
+.siteFooterLinksItemSeparated {
+    margin-left: 12px;
 }
+```
 
-.siteFooterLinksItemSeparated::before {
-    content: '·';
+### Content belongs in the markup
+
+- **Put text, icons, arrows and separators in the JSX, not in the CSS `content` property.** Content in the page is read by screen readers, search engines, translation tools and copy-and-paste, and lives next to the rest of the component's text. Hide a purely decorative character from screen readers with `aria-hidden='true'`.
+- Before writing `content`, try the markup. Use it only when markup can't do the job, say why in the reply, and give a decorative value empty alternative text: `content: '→' / '';`.
+
+Instead of:
+
+```css
+.serviceEntryLink::after {
+    content: ' →';
 }
+```
+
+Write:
+
+```tsx
+<Link className={classes.serviceEntryLink} href={serviceLink}>
+    {'Learn more '}
+    <span aria-hidden='true'>{'→'}</span>
+</Link>
 ```
 
 ## 8. Fonts

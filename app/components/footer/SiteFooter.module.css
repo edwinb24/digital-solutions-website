@@ -1,4 +1,5 @@
 .siteFooter {
+    grid-area: footer;
     padding-top: 34px;
     padding-bottom: 34px;
     background-color: var(--main-color);

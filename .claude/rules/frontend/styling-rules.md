@@ -44,6 +44,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 
 - **Units:** every non-zero length has a unit (`px`, `rem`, `em`, `%`, `vw`, `vh`). Unitless lengths such as `padding: 10;` are invalid CSS and are not allowed. Only `0` may be unitless.
 - **Fluid sizing:** use `min()`, `max()` and `calc()`, for example `width: min(100vw, 1200px)` and `font-size: calc(14px + (18 - 14) * ((100vw - 600px) / (1600 - 600)))`.
+- **No oversized "magic maximum" lengths.** Never write `border-radius: 999px` (or `9999px`, `100vmax` and the like) to get fully rounded corners. When the goal is simply "as much as possible", use a percentage, which says what it means: `border-radius: 100%` instead of `border-radius: 999px`. The two aren't identical, but both give fully rounded corners, and `100%` is far easier to read.
 - **Spacing:** when the sides differ, write each side as a longhand property (`padding-top`, `padding-left`, `margin-left: auto`, `margin-right: auto`). Use a shorthand only when all sides are equal.
 - **Hex colors** (only in `globals.css`) are lowercase.
 - **Strings** in CSS use single quotes: `font-family: 'Display Font'`, `grid-template-areas: 'header' 'main' 'footer'`.

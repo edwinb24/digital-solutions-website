@@ -42,6 +42,21 @@ describe('SiteHeader', () => {
         ).toHaveAttribute('aria-expanded', 'true')
     })
 
+    it('closes the menu when its button is pressed again', async () => {
+        render(<SiteHeader />)
+        await userEvent.click(
+            screen.getByRole('button', {name: OPEN_NAVIGATION_MENU_LABEL}),
+        )
+
+        await userEvent.click(
+            screen.getByRole('button', {name: CLOSE_NAVIGATION_MENU_LABEL}),
+        )
+
+        expect(
+            screen.getByRole('button', {name: OPEN_NAVIGATION_MENU_LABEL}),
+        ).toHaveAttribute('aria-expanded', 'false')
+    })
+
     it('closes the menu and refocuses its button on Escape', async () => {
         render(<SiteHeader />)
         await userEvent.click(screen.getByRole('button'))

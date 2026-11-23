@@ -1,30 +1,97 @@
 1:"$Sreact.fragment"
-2:"/_next/static/chunks/0wj0noag-9_fs.js"
-3:I[39756,["$2"],"default"]
-4:I[37457,["$2"],"default"]
-7:I[97367,["$2"],"OutletBoundary"]
-8:"$Sreact.suspense"
-b:"ViewportBoundary"
-c:I[97367,["$2"],"$b"]
-e:"MetadataBoundary"
-f:I[97367,["$2"],"$e"]
-12:I[68027,["$2"],"default",1]
-5:X
-a:X
-6:[["children",{"s":"__PAGE__","h":514,"d":{"r":["$","$1","c",{"children":[["$","div",null,{"children":"hello world!!"}],null,["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]]}],"p":true,"v":"$a"}}]]
-11:X
-13:X
-14:X
-0:{"P":null,"c":["",""],"q":"","i":false,"t":{"t":{"s":"","h":530,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0wj0noag-9_fs.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],"p":true,"v":"$5"},"c":"$Q6"},"h":{"r":["$","$1","h",{"children":[null,["$","$Lc",null,{"children":"$Ld"}],["$","$Lf",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$8",null,{"name":"Next.Metadata","children":"$L10"}]}],null]}],null]}],"p":true,"v":"$11"}},"m":"$undefined","G":["$12",[]],"S":true,"r":"$13","s":"$14","a":"$@15","l":"$undefined","p":"$undefined","d":"$undefined","b":"g5VCmcB-C9WJ0nELYzqFv","u":"$@16"}
-14:300
-d:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-17:I[27201,["$2"],"IconMark"]
-9:null
-10:[["$","title","0",{"children":"Digital Solutions"}],["$","link","1",{"rel":"icon","href":"/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L17","2",{}]]
-14:C
-11:C
-13:C
-a:C
-5:C
-16:false
-15:null
+2:"/_next/static/chunks/0_bvkc25my475.js"
+3:I[61193,["$2"],"default"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:I[22016,["$2"],""]
+48:"ViewportBoundary"
+49:I[97367,["$2"],"$48"]
+4b:"MetadataBoundary"
+4c:I[97367,["$2"],"$4b"]
+4d:"$Sreact.suspense"
+50:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/0l4uev-0dba5l.css","style"]
+:HL["/_next/static/chunks/248ap09tak_b3.css","style"]
+:HL["/_next/static/media/82450a180bcad83c-s.p.0p-wng2nn8o-p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+7:X
+47:X
+8:[["children",{"s":"__PAGE__","h":514,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"dsw1Bq_homeContent","children":[["$","section",null,{"className":"eEw2Cq_homeBanner","children":[["$","div",null,{"aria-hidden":"true","className":"hi45Pa_chessBoard","children":[["$","div","a8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}],["$","div","b8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}],["$","div","c8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}],["$","div","d8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}],["$","div","e8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}],["$","div","f8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}],["$","div","g8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}],"$L9","$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c","$L1d","$L1e","$L1f","$L20","$L21","$L22","$L23","$L24","$L25","$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35","$L36","$L37","$L38","$L39","$L3a","$L3b","$L3c","$L3d","$L3e","$L3f","$L40","$L41"]}],"$L42","$L43"]}],"$L44","$L45"]}],null,"$L46"]}],"p":true,"v":"$47"}}]]
+4f:X
+51:X
+52:X
+0:{"P":null,"c":["",""],"q":"","i":false,"t":{"t":{"s":"","h":530,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0l4uev-0dba5l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/248ap09tak_b3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0_bvkc25my475.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"className":"JA-K4W_variable","lang":"en","children":["$","body",null,{"children":[["$","$L3",null,{}],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"zvHnMG_siteFooter","children":["$","div",null,{"className":"GbalIW_pageWideWrapper zvHnMG_siteFooterContent","children":[["$","div",null,{"className":"zvHnMG_siteFooterLogo","children":[["$","svg",null,{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","className":"zvHnMG_siteFooterLogoIcon","children":[["$","path",null,{"d":"M23 25c.5-8.5-1-15-6.5-17.5L15.5 4 14 6.8C11 8 9 10.5 7.5 14L7 16c1 1.5 3 1.5 5 0 1-.5 2-.2 2.2.5-1.7 2.5-3.7 4.5-3.7 8.5zM13.4 10.5a.9.9 0 1 1-1.8 0 .9.9 0 1 1 1.8 0z","fillRule":"evenodd"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}],["$","span",null,{"children":"E4 Digital Solutions"}]]}],["$","nav",null,{"aria-label":"Footer","children":["$","ul",null,{"className":"zvHnMG_siteFooterLinks","children":[["$","li","services-page-link",{"children":[false,["$","$L6",null,{"className":"zvHnMG_siteFooterLink","href":"#","children":"Services"}]]}],["$","li","approach-page-link",{"children":[["$","span",null,{"aria-hidden":"true","className":"zvHnMG_siteFooterLinksSeparator","children":"·"}],["$","$L6",null,{"className":"zvHnMG_siteFooterLink","href":"#","children":"Approach"}]]}],["$","li","insight-page-link",{"children":[["$","span",null,{"aria-hidden":"true","className":"zvHnMG_siteFooterLinksSeparator","children":"·"}],["$","$L6",null,{"className":"zvHnMG_siteFooterLink","href":"#","children":"Insight"}]]}],["$","li","about-page-link",{"children":[["$","span",null,{"aria-hidden":"true","className":"zvHnMG_siteFooterLinksSeparator","children":"·"}],["$","$L6",null,{"className":"zvHnMG_siteFooterLink","href":"#","children":"About"}]]}]]}]}]]}]}]]}]}]]}],"p":true,"v":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L49",null,{"children":"$L4a"}],["$","$L4c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$4d",null,{"name":"Next.Metadata","children":"$L4e"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":true,"v":"$4f"}},"m":"$undefined","G":["$50",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0l4uev-0dba5l.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/248ap09tak_b3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$51","s":"$52","a":"$@53","l":"$undefined","p":"$undefined","d":"$undefined","b":"rjCw741cm3DyXoE_SaTQp","u":"$@54"}
+55:I[97367,["$2"],"OutletBoundary"]
+9:["$","div","h8",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+a:["$","div","a7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+b:["$","div","b7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+c:["$","div","c7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+d:["$","div","d7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+e:["$","div","e7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+f:["$","div","f7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare hi45Pa_chessBoardHighlightedSquare","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece hi45Pa_chessBoardMutedPiece","children":["$","svg","king",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","path",null,{"d":"M15 2h2v2h2v2h-2v3h-2V6h-2V4h2z"}],["$","path",null,{"d":"M11 9.5h10V11H11z"}],["$","path",null,{"d":"M10 12h12l-2 4 1.5 9h-11L12 16z"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+10:["$","div","g7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+11:["$","div","h7",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+12:["$","div","a6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+13:["$","div","b6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece hi45Pa_chessBoardMutedPiece","children":["$","svg","pawn",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","circle",null,{"cx":"16","cy":"9","r":"4"}],["$","path",null,{"d":"M12.5 14h7l-1 2 2.5 9h-10l2.5-9z"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+14:["$","div","c6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+15:["$","div","d6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare hi45Pa_chessBoardHighlightedSquare","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece ","children":["$","svg","knight",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","path",null,{"d":"M23 25c.5-8.5-1-15-6.5-17.5L15.5 4 14 6.8C11 8 9 10.5 7.5 14L7 16c1 1.5 3 1.5 5 0 1-.5 2-.2 2.2.5-1.7 2.5-3.7 4.5-3.7 8.5zM13.4 10.5a.9.9 0 1 1-1.8 0 .9.9 0 1 1 1.8 0z","fillRule":"evenodd"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+16:["$","div","e6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+17:["$","div","f6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+18:["$","div","g6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+19:["$","div","h6",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+1a:["$","div","a5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+1b:["$","div","b5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+1c:["$","div","c5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+1d:["$","div","d5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+1e:["$","div","e5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece hi45Pa_chessBoardMutedPiece","children":"$13:props:children:props:children"}]}]
+1f:["$","div","f5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+20:["$","div","g5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+21:["$","div","h5",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+22:["$","div","a4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+23:["$","div","b4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+24:["$","div","c4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece ","children":["$","svg","bishop",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","circle",null,{"cx":"16","cy":"4.5","r":"1.8"}],["$","path",null,{"d":"M16 6.5c3.5 3 5.5 6 5.5 9 0 2.5-1.5 4-3 4.5l1 5h-7l1-5c-1.5-.5-3-2-3-4.5 0-3 2-6 5.5-9zM17.6 10.2l1.2 1-3.6 4.2-1.2-1z","fillRule":"evenodd"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+25:["$","div","d4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+26:["$","div","e4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+27:["$","div","f4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+28:["$","div","g4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece ","children":["$","svg","rook",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","path",null,{"d":"M9 5h3v3h2.5V5h3v3H20V5h3v6l-2 2v12H11V13l-2-2z"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+29:["$","div","h4",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+2a:["$","div","a3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+2b:["$","div","b3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+2c:["$","div","c3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+2d:["$","div","d3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+2e:["$","div","e3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":["$","span",null,{"className":"hi45Pa_chessBoardPiece ","children":["$","svg","queen",{"aria-hidden":"true","fill":"currentColor","focusable":"false","height":"1em","viewBox":"0 0 32 32","width":"1em","children":[["$","circle",null,{"cx":"9","cy":"7","r":"1.3"}],["$","circle",null,{"cx":"12.5","cy":"5.5","r":"1.3"}],["$","circle",null,{"cx":"16","cy":"5","r":"1.3"}],["$","circle",null,{"cx":"19.5","cy":"5.5","r":"1.3"}],["$","circle",null,{"cx":"23","cy":"7","r":"1.3"}],["$","path",null,{"d":"M9 8.5l3 7 1.5-8 2.5 7.5 2.5-7.5 1.5 8 3-7-2 10.5.5 6h-11l.5-6z"}],["$","path",null,{"d":"M7 25h18v3H7z"}]]}]}]}]
+2f:["$","div","f3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+30:["$","div","g3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+31:["$","div","h3",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+32:["$","div","a2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+33:["$","div","b2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+34:["$","div","c2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+35:["$","div","d2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+36:["$","div","e2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+37:["$","div","f2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+38:["$","div","g2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+39:["$","div","h2",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+3a:["$","div","a1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+3b:["$","div","b1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+3c:["$","div","c1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+3d:["$","div","d1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+3e:["$","div","e1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+3f:["$","div","f1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+40:["$","div","g1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardDarkSquare ","children":null}]
+41:["$","div","h1",{"className":"hi45Pa_chessBoardSquare hi45Pa_chessBoardLightSquare ","children":null}]
+42:["$","div",null,{"className":"eEw2Cq_homeBannerBackdrop"}]
+43:["$","div",null,{"className":"eEw2Cq_homeBannerContent","children":[["$","p",null,{"className":"eEw2Cq_homeBannerEyebrow","children":"Secure · Efficient · Built to last"}],["$","h1",null,{"className":"eEw2Cq_homeBannerHeadline","children":"Think three moves ahead of your code."}],["$","p",null,{"className":"eEw2Cq_homeBannerParagraph","children":"We fix vibe-coded projects, build new applications the right way, and advise on performance, interface and security."}],["$","$L6",null,{"className":"eEw2Cq_homeBannerCallToAction","href":"#","children":"Book a code review"}]]}]
+44:["$","section",null,{"className":"GbalIW_pageWideWrapper b-yhtW_servicesSection","children":[["$","h2",null,{"className":"b-yhtW_servicesSectionTitle","children":"Services"}],["$","ul",null,{"className":"b-yhtW_servicesSectionList","children":[["$","li","ai-integration",{"className":"jwAHXW_serviceEntry","children":[["$","p",null,{"className":"jwAHXW_serviceEntryNumberLabel","children":"01 — INTEGRATE"}],["$","h3",null,{"className":"jwAHXW_serviceEntryTitle","children":"AI Integration"}],["$","p",null,{"className":"jwAHXW_serviceEntryDescription","children":"Connect your business seamlessly to the latest AI models, so your company can receive orders from them."}],["$","span",null,{"className":"jwAHXW_serviceEntryIcon","children":"$28:props:children:props:children"}]]}],["$","li","code-doctors",{"className":"jwAHXW_serviceEntry","children":[["$","p",null,{"className":"jwAHXW_serviceEntryNumberLabel","children":"02 — FIX"}],["$","h3",null,{"className":"jwAHXW_serviceEntryTitle","children":"Code Doctors"}],["$","p",null,{"className":"jwAHXW_serviceEntryDescription","children":"Give us your codebase and let us improve it. We look into the code, correct bugs, refactor, and make it more efficient overall."}],["$","span",null,{"className":"jwAHXW_serviceEntryIcon","children":"$15:props:children:props:children"}]]}],["$","li","ai-solutions",{"className":"jwAHXW_serviceEntry","children":[["$","p",null,{"className":"jwAHXW_serviceEntryNumberLabel","children":"03 — GROW"}],["$","h3",null,{"className":"jwAHXW_serviceEntryTitle","children":"AI Solutions"}],["$","p",null,{"className":"jwAHXW_serviceEntryDescription","children":"Expand and grow your business with custom solutions built around your operations, such as an AI chat bot, call automation and business finance management."}],["$","span",null,{"className":"jwAHXW_serviceEntryIcon","children":"$24:props:children:props:children"}]]}]]}]]}]
+45:["$","section",null,{"className":"AqUtOG_approachSection","children":["$","div",null,{"className":"GbalIW_pageWideWrapper","children":[["$","h2",null,{"className":"AqUtOG_approachSectionTitle","children":"Our approach: study the board first."}],["$","ol",null,{"className":"AqUtOG_approachSectionSteps","children":[["$","li","assess",{"className":"CI9aga_approachStepEntry","children":[["$","h3",null,{"className":"CI9aga_approachStepEntryTitle","children":"1. Assess"}],["$","p",null,{"className":"CI9aga_approachStepEntryDescription","children":"We read your code and learn how your business runs."}]]}],["$","li","plan",{"className":"CI9aga_approachStepEntry","children":[["$","h3",null,{"className":"CI9aga_approachStepEntryTitle","children":"2. Plan"}],["$","p",null,{"className":"CI9aga_approachStepEntryDescription","children":"A prioritized plan, with risks and costs stated plainly."}]]}],["$","li","build",{"className":"CI9aga_approachStepEntry","children":[["$","h3",null,{"className":"CI9aga_approachStepEntryTitle","children":"3. Build"}],["$","p",null,{"className":"CI9aga_approachStepEntryDescription","children":"Secure, tested changes in small, reviewable steps."}]]}],["$","li","hand-over",{"className":"CI9aga_approachStepEntry","children":[["$","h3",null,{"className":"CI9aga_approachStepEntryTitle","children":"4. Hand over"}],["$","p",null,{"className":"CI9aga_approachStepEntryDescription","children":"Documentation and a codebase your team can own."}]]}]]}]]}]}]
+46:["$","$L55",null,{"children":["$","$4d",null,{"name":"Next.MetadataOutlet","children":"$@56"}]}]
+52:300
+4a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+57:I[27201,["$2"],"IconMark"]
+4e:[["$","title","0",{"children":"E4 Digital Solutions"}],["$","link","1",{"rel":"icon","href":"/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L57","2",{}]]
+56:null
+52:C
+4f:C
+51:C
+47:C
+7:C
+54:false
+53:null

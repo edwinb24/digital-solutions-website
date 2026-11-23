@@ -108,6 +108,7 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 - **Positional styles become a class the component sets.** Where a selector would pick elements by position (`li + li`, `:first-child`), add a class in the JSX when rendering the list (for example from the `map` index) and style that class.
 - Before writing `>` or `+`, try a class. Use one only when no class can do the job, and say why in the reply.
 - **Exception: list items.** `>` may select the items of a list (`ul > li`, `ol > li`), with the class on the list: `.siteFooterLinks > li`. The `+` combinator has no exception.
+- **Exception: the page grid.** In the global reset stylesheet (`app/reset.css`), `>` may select the `header`, `main` and `footer` elements directly under `body` to place them in the body grid: `body > main { grid-area: main; }`.
 
 Instead of:
 

@@ -55,3 +55,15 @@ body {
     grid-template-rows: auto 1fr auto;
     min-height: 100dvh;
 }
+
+body > header {
+    grid-area: header;
+}
+
+body > main {
+    grid-area: main;
+}
+
+body > footer {
+    grid-area: footer;
+}

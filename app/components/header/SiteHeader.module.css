@@ -1,7 +1,6 @@
 .siteHeader {
     position: relative;
     z-index: 3;
-    grid-area: header;
     color: var(--font-color);
 }
 

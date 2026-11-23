@@ -1,6 +1,20 @@
 {
     "permissions": {
+        "allow": [
+            "Bash(git status)",
+            "Bash(git status *)",
+            "Bash(git log *)",
+            "Bash(git fetch)",
+            "Bash(git fetch *)",
+            "Bash(git branch)",
+            "Bash(git checkout *)",
+            "Bash(git merge --ff-only *)",
+            "Bash(curl http://127.0.0.1:8765/*)",
+            "Bash(curl * http://127.0.0.1:8765/*)"
+        ],
         "ask": [
+            "Bash(git checkout -- *)",
+            "Bash(git checkout .)",
             "Bash(yarn add:*)",
             "Bash(yarn remove:*)",
             "Bash(yarn upgrade:*)",
@@ -14,6 +28,8 @@
             "Bash(npm i:*)"
         ],
         "deny": [
+            "Bash(git branch *)",
+            "Bash(git branch -D *)",
             "Bash(npm ci:*)",
             "Bash(npm uninstall:*)",
             "Bash(npm update:*)",

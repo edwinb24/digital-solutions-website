@@ -1,3 +1,4 @@
+import {COMPANY_NAME} from '@/app/utils/constants'
 import type {Metadata} from 'next'
 import {Manrope} from 'next/font/google'
 import SiteFooter from './components/footer/SiteFooter'
@@ -12,7 +13,7 @@ const manropeFont = Manrope({
 })
 
 export const metadata: Metadata = {
-    title: 'E4 Digital Solutions',
+    title: COMPANY_NAME,
 }
 
 // Wraps every page in the body grid with the header, footer and brand font

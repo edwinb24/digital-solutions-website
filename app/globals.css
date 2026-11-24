@@ -12,16 +12,16 @@
     --site-header-height: 84px;
 }
 
-@media only screen and (max-width: 850px) {
-    :root {
-        --site-header-height: 72px;
-    }
-}
-
 /* Base Elements */
 
 body {
     background-color: var(--main-alternative-color);
     color: var(--font-color);
     font-family: var(--style-font-family);
+}
+
+@media only screen and (max-width: 850px) {
+    :root {
+        --site-header-height: 72px;
+    }
 }

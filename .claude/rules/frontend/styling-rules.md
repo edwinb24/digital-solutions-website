@@ -44,7 +44,9 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 
 - **Units:** every non-zero length has a unit (`px`, `rem`, `em`, `%`, `vw`, `vh`). Unitless lengths such as `padding: 10;` are invalid CSS and are not allowed. Only `0` may be unitless.
 - **Fluid sizing:** use `min()`, `max()` and `calc()`, for example `width: min(100vw, 1200px)` and `font-size: calc(14px + (18 - 14) * ((100vw - 600px) / (1600 - 600)))`.
-- **No oversized "magic maximum" lengths.** Never write `border-radius: 999px` (or `9999px`, `100vmax` and the like) to get fully rounded corners. When the goal is simply "as much as possible", use a percentage, which says what it means: `border-radius: 100%` instead of `border-radius: 999px`. The two aren't identical, but both give fully rounded corners, and `100%` is far easier to read.
+- **No oversized "magic maximum" lengths.** Never write `border-radius: 999px` (or `9999px`, `100vmax` and the like) to get fully rounded corners. Instead:
+  - A square element (a circle) uses `border-radius: 100%`.
+  - A pill (wider than tall) uses a fixed radius of half its height: a 36px-tall link gets `border-radius: 18px`. `100%` would turn it into an ellipse. Give the pill a known height (a fixed `line-height` or `height`) so the radius stays exact.
 - **Spacing:** when the sides differ, write each side as a longhand property (`padding-top`, `padding-left`, `margin-left: auto`, `margin-right: auto`). Use a shorthand only when all sides are equal.
 - **Hex colors** (only in `globals.css`) are lowercase.
 - **Strings** in CSS use single quotes: `font-family: 'Display Font'`, `grid-template-areas: 'header' 'main' 'footer'`.
@@ -105,10 +107,11 @@ These extend `.claude/rules/general-rules.md`. The 4-space indentation and singl
 ### Selectors: one class per element, no combinators
 
 - **Strongly avoid the child (`>`) and adjacent-sibling (`+`) combinators.** Give each element you style its own class instead, with a compound name built from its parent's class: `.siteFooterLinks` → `.siteFooterLinksItem`. Each rule then reads on its own, survives markup changes, and keeps every selector at the same specificity.
-- **Positional styles become a class the component sets.** Where a selector would pick elements by position (`li + li`, `:first-child`), add a class in the JSX when rendering the list (for example from the `map` index) and style that class.
+- **Items picked by their neighbour become a class the component sets.** Where a selector would need `+` (`li + li`), add a class in the JSX when rendering the list (for example from the `map` index) and style that class.
 - Before writing `>` or `+`, try a class. Use one only when no class can do the job, and say why in the reply.
 - **Exception: list items.** `>` may select the items of a list (`ul > li`, `ol > li`), with the class on the list: `.siteFooterLinks > li`. The `+` combinator has no exception.
 - **Exception: the page grid.** In the global reset stylesheet (`app/reset.css`), `>` may select the `header`, `main` and `footer` elements directly under `body` to place them in the body grid: `body > main { grid-area: main; }`.
+- **Exception: a specific element.** Positional pseudo-classes (`:first-child`, `:last-child`, `:nth-child()`, `:nth-of-type()`) may pick one specific element, together with the `>` that reaches it: `.navigationMenu > li:first-child > .navigationMenuLink`.
 
 Instead of:
 

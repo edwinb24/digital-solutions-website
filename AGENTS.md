@@ -99,7 +99,7 @@ Make sure to replace `<application_name>` with your application name.
   ssh -o BatchMode=yes e4-claude "sudo -n /usr/bin/docker ps; sudo -n /usr/bin/docker logs --tail 200 digital-solutions-website"
   ```
 - Ask the user before any command that changes state: pulling or removing images, `docker rm`, `docker run`, restarts, editing files or installs. For these, give the user the command to run as their own account. Don't ask them to widen the read-only user's permissions.
-- For deploys and rollbacks, follow the "Deploying" section of `README.md`. Normal deploys run from `.github/workflows/deploy.yml` on a push to `main` that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow.
+- For deploys and rollbacks, follow the "Deploying" section of `README.md`. Normal deploys run from `.github/workflows/deploy.yml` on a push to `prod` (a release pull request from `main`, merged with a merge commit) that changes `.next/standalone/**`, `Dockerfile`, `.dockerignore` or the workflow.
 - To find out which version is live, look at the image tag in `docker ps --format '{{.Image}}'`. The tag is the short SHA of the deployed commit.
 
 <!-- BEGIN:nextjs-agent-rules -->

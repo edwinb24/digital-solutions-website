@@ -31,27 +31,35 @@ None are required yet. Server-only secrets go in `.env.local` locally and in `/o
 
 The app runs in a Docker container on an Ubuntu server, behind an Apache reverse proxy that handles HTTPS. The container listens on `127.0.0.1:3000` only. Images are stored in GitHub Container Registry (GHCR) as `ghcr.io/edwinb24/digital-solutions-website`, tagged with the short commit SHA and `latest`. The package is public, like this repository, so the server pulls it without a login. The image contains only the committed `.next/standalone` folder, never a `.env` file.
 
+The live version is the `prod` branch. Work is merged into `main` through pull requests, and merging into `main` never deploys. A release is a pull request from `main` into `prod`.
+
 ### Release a new version
 
-Run these on your computer, in Git Bash, in the project root.
+Run steps 1 and 2 on your computer, in Git Bash, in the project root, on a task branch.
 
 1. Build the standalone app:
    ```bash
    yarn build:standalone
    ```
-2. Commit your changes **together with the `.next/standalone` folder**, and push to `main`:
+2. Commit your changes **together with the `.next/standalone` folder**, push the task branch, open a pull request into `main` and merge it:
    ```bash
    git add -A .next/standalone <changed_files>
    git commit -m "<commit_message>"
-   git push
+   git push -u origin <branch_name>
    ```
-   Make sure to replace `<changed_files>` with the files you edited, and `<commit_message>` with a short description of the change. `-A` also stages the build files that the new build deleted.
+   Make sure to replace `<changed_files>` with the files you edited, `<commit_message>` with a short description of the change, and `<branch_name>` with your task branch. `-A` also stages the build files that the new build deleted.
 
    > **CAUTION:** The image is made from the committed `.next/standalone` folder. If you skip step 1, the previous build goes to production again.
 
-3. On GitHub, open **Actions → Deploy to production** and wait for the run to finish. It builds the image, pushes it to GHCR and replaces the container on the server. The last line of the "Deploy on the server" step shows `Deployed ghcr.io/edwinb24/digital-solutions-website:<short_sha>`.
+3. Open a release pull request from `main` into `prod`. On GitHub, go to **Pull requests → New pull request**, set **base** to `prod` and **compare** to `main`. Or run:
+   ```bash
+   gh pr create --base prod --head main --title "Release <release_date>" --body "Release main to prod"
+   ```
+   Make sure to replace `<release_date>` with today's date, for example `2026-11-28`.
+4. Merge it with **Create a merge commit**. Don't squash or rebase it: that rewrites the commits, so `prod` drifts away from `main` and the next release pull request shows old changes again or conflicts.
+5. On GitHub, open **Actions → Deploy to production** and wait for the run to finish. It builds the image, pushes it to GHCR and replaces the container on the server. The last line of the "Deploy on the server" step shows `Deployed ghcr.io/edwinb24/digital-solutions-website:<short_sha>`. The tag is the short SHA of the release's merge commit on `prod`.
 
-The workflow runs only when `.next/standalone/**`, `Dockerfile`, `.dockerignore` or `.github/workflows/deploy.yml` change, so a change to only `README.md` doesn't deploy. To run it again without a new commit, use **Run workflow** on the same page.
+The workflow runs only when `.next/standalone/**`, `Dockerfile`, `.dockerignore` or `.github/workflows/deploy.yml` change, so a change to only `README.md` doesn't deploy. To run it again without a new commit, use **Run workflow** on the same page and choose `prod`. A run started from any other branch skips the deploy job.
 
 > **NOTE:** The build runs on Windows, but the container runs Linux. Don't add packages with native binaries (such as `sharp`) to the runtime code: the Windows binary would be copied into the Linux image. This is why `next.config.ts` sets `images: {unoptimized: true}`.
 
@@ -74,8 +82,13 @@ Use this only when GitHub Actions isn't available. You build and push the image 
 Run these in Git Bash, in the project root.
 
 1. Start Docker Desktop and wait until it shows **Engine running**.
-2. Build the standalone app and commit it, as in steps 1 and 2 of [Release a new version](#release-a-new-version). Push to `main` too, so that `main` matches production. If GitHub Actions comes back later, it deploys the same commit again, which is harmless.
-3. Save the short SHA of the new commit:
+2. Do steps 1 to 4 of [Release a new version](#release-a-new-version), so that `prod` holds what you deploy. If GitHub Actions comes back later, it deploys the same commit again, which is harmless. Then check out the latest `prod`:
+   ```bash
+   git checkout prod
+   git pull --ff-only origin prod
+   ```
+   Switch back with `git checkout main` when you're done.
+3. Save the short SHA of the `prod` commit:
    ```bash
    sha=$(git rev-parse --short HEAD)
    echo $sha
@@ -134,13 +147,13 @@ Use this when the live version doesn't work. There are two ways.
 2. Open the run of the last commit that worked, and click **Re-run all jobs**. The workflow packages that commit's `.next/standalone` again and deploys it with its own SHA tag. It also moves the `latest` tag back to that commit.
 3. Do the steps in [Verify production](#verify-production).
 
-> **CAUTION:** After a re-run, `main` still points to the bad commit, and the next push deploys from `main` again. Fix the problem or run `git revert <bad_sha>` first. Replace `<bad_sha>` with the SHA of the commit that broke production.
+> **CAUTION:** After a re-run, `prod` still points to the bad commit, and the next release deploys from `prod` again. Fix the problem first, or revert the bad commit on a task branch (`git revert <bad_sha>`) and release the fix through `main` into `prod`. Replace `<bad_sha>` with the SHA of the commit that broke production.
 
 #### Option B: on the server
 
 Use this if GitHub Actions isn't available. Nothing is rebuilt: GHCR keeps every image.
 
-1. Find the short SHA of the last version that worked. Use the tag you recorded in step 2 of the server part of [Deploy manually](#deploy-manually-without-github-actions), `git log --oneline`, or the package page at <https://github.com/edwinb24?tab=packages> → **digital-solutions-website**.
+1. Find the short SHA of the last version that worked. Use the tag you recorded in step 2 of the server part of [Deploy manually](#deploy-manually-without-github-actions), `git log --oneline origin/prod`, or the package page at <https://github.com/edwinb24?tab=packages> → **digital-solutions-website**.
 2. Connect to the server with SSH as your own user, not root.
 3. Start the version that worked:
    ```bash
@@ -152,7 +165,7 @@ Use this if GitHub Actions isn't available. Nothing is rebuilt: GHCR keeps every
    Make sure to replace `<last_good_sha>` with the short SHA from step 1.
 4. Do the steps in [Verify production](#verify-production).
 
-> **CAUTION:** A rollback on the server changes only the server. `main` and the `latest` tag still point to the bad commit. Fix the problem or run `git revert <bad_sha>` before the next release. Replace `<bad_sha>` with the SHA of the commit that broke production.
+> **CAUTION:** A rollback on the server changes only the server. `prod` and the `latest` tag still point to the bad commit. Fix the problem, or revert the bad commit on a task branch (`git revert <bad_sha>`) and release the fix through `main` into `prod`, before the next release. Replace `<bad_sha>` with the SHA of the commit that broke production.
 
 ### Verify production
 
